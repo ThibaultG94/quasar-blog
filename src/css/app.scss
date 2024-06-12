@@ -1,0 +1,8 @@
+// app global css in SCSS form
+@import "fonts.scss";
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: $light;
+    color: #1D1D1D;
+}
