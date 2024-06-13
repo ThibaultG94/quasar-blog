@@ -1,12 +1,15 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header class="custom-header">
+  <q-layout view="lHh Lpr lFf" :class="{ 'dark-mode': darkMode }">
+    <q-header
+      class="custom-header"
+      :class="{ 'dark-header': darkMode }"
+      color="--q-dark-primary"
+    >
       <div class="container">
         <q-toolbar>
           <q-toolbar-title>
             <q-btn flat label="ThiDev" to="/" class="title-link" />
           </q-toolbar-title>
-          <q-space />
           <q-btn flat label="Blog" to="/blog" />
           <q-btn flat label="Projets" to="/projects" />
           <q-btn flat label="À propos" to="/about" />
@@ -30,7 +33,6 @@
       <div class="container footer-container">
         <q-toolbar class="footer-toolbar">
           <q-toolbar-title class="footer-title">© 2024 ThiDev</q-toolbar-title>
-          <q-space />
           <q-btn flat label="CGU" to="/cgu" />
           <q-btn
             flat
@@ -71,14 +73,15 @@ defineOptions({
 });
 
 const $q = useQuasar();
-const leftDrawerOpen = ref(false);
+const darkMode = ref($q.dark.isActive);
 
 function toggleDarkMode() {
   $q.dark.toggle();
+  darkMode.value = $q.dark.isActive;
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .custom-header {
   max-width: 1200px;
   margin: 0 auto;
@@ -109,7 +112,7 @@ function toggleDarkMode() {
 .custom-footer {
   padding: 5px 20px;
   position: relative;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -117,5 +120,19 @@ function toggleDarkMode() {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+}
+
+// Dark mode styles
+.dark-mode {
+  background-color: var(--dark-background);
+  color: var(--dark-text);
+}
+
+.dark-header {
+  background-color: var(--dark-primary);
+}
+
+.dark-footer {
+  background-color: var(--dark-surface);
 }
 </style>
