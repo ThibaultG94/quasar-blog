@@ -1,14 +1,15 @@
 <template>
-  <q-layout view="lHh Lpr lFf" :class="{ 'dark-mode': darkMode }">
-    <q-header
-      class="custom-header"
-      :class="{ 'dark-header': darkMode }"
-      color="--q-dark-primary"
-    >
-      <div class="container">
+  <q-layout view="hHh Lpr fff" :class="{ 'dark-mode': darkMode }">
+    <q-header class="max-w">
+      <div>
         <q-toolbar>
           <q-toolbar-title>
-            <q-btn flat label="ThiDev" to="/" class="title-link" />
+            <q-btn
+              flat
+              label="ThiDev"
+              to="/"
+              class="text-h6 text-weight bold text-uppercase"
+            />
           </q-toolbar-title>
           <q-btn flat label="Blog" to="/blog" />
           <q-btn flat label="Projets" to="/projects" />
@@ -25,41 +26,39 @@
       </div>
     </q-header>
 
-    <q-page-container class="container">
+    <q-page-container class="max-w">
       <router-view />
     </q-page-container>
 
-    <div class="custom-footer">
-      <div class="container footer-container">
-        <q-toolbar class="footer-toolbar">
-          <q-toolbar-title class="footer-title">© 2024 ThiDev</q-toolbar-title>
-          <q-btn flat label="CGU" to="/cgu" />
-          <q-btn
-            flat
-            round
-            icon="fab fa-linkedin"
-            href="https://linkedin.com/in/thibaultG94"
-            target="_blank"
-            aria-label="LinkedIn"
-          />
-          <q-btn
-            flat
-            round
-            icon="fab fa-github"
-            href="https://github.com/ThibaultG94"
-            target="_blank"
-            aria-label="GitHub"
-          />
-          <q-btn
-            flat
-            round
-            icon="fab fa-twitter"
-            href="https://twitter.com/ThibaultG94"
-            target="_blank"
-            aria-label="Twitter"
-          />
-        </q-toolbar>
-      </div>
+    <div class="max-w">
+      <q-toolbar class="justify-between">
+        <q-toolbar-title class="text-caption">© 2024 ThiDev</q-toolbar-title>
+        <q-btn flat label="CGU" to="/cgu" />
+        <q-btn
+          flat
+          round
+          icon="fab fa-linkedin"
+          href="https://linkedin.com/in/thibaultG94"
+          target="_blank"
+          aria-label="LinkedIn"
+        />
+        <q-btn
+          flat
+          round
+          icon="fab fa-github"
+          href="https://github.com/ThibaultG94"
+          target="_blank"
+          aria-label="GitHub"
+        />
+        <q-btn
+          flat
+          round
+          icon="fab fa-twitter"
+          href="https://twitter.com/ThibaultG94"
+          target="_blank"
+          aria-label="Twitter"
+        />
+      </q-toolbar>
     </div>
   </q-layout>
 </template>
@@ -82,47 +81,6 @@ function toggleDarkMode() {
 </script>
 
 <style scoped lang="scss">
-.custom-header {
-  max-width: 1200px;
-  margin: 0 auto;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  overflow: hidden;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.title-link {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.footer-toolbar {
-  justify-content: space-between;
-}
-
-.footer-title {
-  font-size: 0.875rem;
-}
-
-.custom-footer {
-  padding: 5px 20px;
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-// Dark mode styles
 .dark-mode {
   background-color: var(--dark-background);
   color: var(--dark-text);
