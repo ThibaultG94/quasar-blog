@@ -1,8 +1,8 @@
 <template>
   <q-page>
-    <div class="container">
-      <h1 class="title">Actu</h1>
-      <p class="subtitle">
+    <div class="q-px-lg">
+      <h1 class="text-h4 text-weight-bold q-mb-sm">Actu</h1>
+      <p class="q-mb-lg text-h6 text-weight-regular text-grey-8">
         Découvrez toutes les actus web et tech, les dernières tendances, les
         astuces et les conseils pour les développeurs web et mobiles.
       </p>
@@ -56,24 +56,6 @@ const newsItems = [
 </script>
 
 <style scoped>
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  font-size: 1.25rem;
-  color: #666;
-  margin-bottom: 2rem;
-}
-
 .news-container {
   display: flex;
   flex-direction: column;

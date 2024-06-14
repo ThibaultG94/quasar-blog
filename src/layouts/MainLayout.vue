@@ -6,7 +6,7 @@
           <q-toolbar-title>
             <q-btn
               flat
-              label="ThiDev"
+              label="ThiBlog"
               to="/"
               class="text-h6 text-weight bold text-uppercase"
             />
@@ -32,7 +32,7 @@
 
     <div class="max-w">
       <q-toolbar class="justify-between">
-        <q-toolbar-title class="text-caption">© 2024 ThiDev</q-toolbar-title>
+        <q-toolbar-title class="text-caption">© 2024 Thiblog</q-toolbar-title>
         <q-btn flat label="CGU" to="/cgu" />
         <q-btn
           flat
@@ -84,13 +84,5 @@ function toggleDarkMode() {
 .dark-mode {
   background-color: var(--dark-background);
   color: var(--dark-text);
-}
-
-.dark-header {
-  background-color: var(--dark-primary);
-}
-
-.dark-footer {
-  background-color: var(--dark-surface);
 }
 </style>
