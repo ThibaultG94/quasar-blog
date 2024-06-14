@@ -5,7 +5,7 @@
     --primary: #90e0ef;
     --secondary: #00b4d8;
     --tertiary: #0077b6;
-    --accent: #E4C1F9;
+    --accent: #ff99c8;
     --light: #caf0f8;
     --primary-dark: #1D000E;
     --dark-page: #03045e;
@@ -43,4 +43,12 @@ body {
 .max-w {
     max-width: 1000px;
     margin: 0 auto;
+}
+
+.w-100 {
+    width: 100px;
+}
+
+.shrink-0 {
+    flex-shrink: 0;
 }

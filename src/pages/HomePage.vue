@@ -6,18 +6,35 @@
         Découvrez toutes les actus web et tech, les dernières tendances, les
         astuces et les conseils pour les développeurs web et mobiles.
       </p>
-      <div class="news-container">
-        <div class="news-item" v-for="news in newsItems" :key="news.date">
-          <div class="news-date">{{ news.date }}</div>
-          <div class="news-content">
-            <h2 class="news-title">{{ news.title }}</h2>
-            <div class="news-tags">
-              <span class="news-tag" v-for="tag in news.tags" :key="tag">{{
-                tag
-              }}</span>
+      <div class="column q-gutter-lg">
+        <div
+          class="row no-wrap q-gutter-sm q-pb-md border-news"
+          v-for="news in newsItems"
+          :key="news.date"
+        >
+          <div class="w-100 text-subtitle1 text-grey-7 shrink-0">
+            {{ news.date }}
+          </div>
+          <div>
+            <h2 class="text-h5 q-py-xs text-weight-bold q-mb-sm">
+              {{ news.title }}
+            </h2>
+            <div class="row wrap q-gutter-sm q-mb-sm">
+              <span
+                class="text-body2 text-accent"
+                v-for="tag in news.tags"
+                :key="tag"
+                >{{ tag }}</span
+              >
             </div>
-            <p class="news-description">{{ news.description }}</p>
-            <q-btn flat label="En savoir plus" class="news-link" />
+            <p class="text-body1 q-mb-sm">
+              {{ news.description }}
+            </p>
+            <q-btn
+              flat
+              label="En savoir plus"
+              class="text-accent q-px-none text-weight-bold"
+            />
           </div>
         </div>
       </div>
@@ -56,59 +73,7 @@ const newsItems = [
 </script>
 
 <style scoped>
-.news-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.news-item {
-  display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
+.border-news {
   border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 1.5rem;
-}
-
-.news-date {
-  font-size: 1rem;
-  color: #999;
-  flex-shrink: 0;
-  width: 100px;
-}
-
-.news-content {
-  flex-grow: 1;
-}
-
-.news-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.news-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.news-tag {
-  font-size: 0.875rem;
-  color: #f50057;
-}
-
-.news-description {
-  font-size: 1rem;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-.news-link {
-  color: #f50057;
-  padding-left: 0;
-  padding-right: 0;
-  font-weight: bold;
 }
 </style>
