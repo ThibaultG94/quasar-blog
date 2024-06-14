@@ -1,10 +1,12 @@
 <template>
-  <q-page class="q-py-md blog-page">
-    <div class="container">
-      <div class="sidebar">
+  <div class="q-py-md">
+    <div class="row q-gutter-x-md q-px-md">
+      <div class="col-auto">
         <q-card>
           <q-card-section>
-            <div class="text-h6 text-bold">TOUS LES ARTICLES</div>
+            <div class="text-h6 text-weight-bold text-uppercase">
+              Tous les Articles
+            </div>
           </q-card-section>
           <q-list dense>
             <q-item
@@ -21,10 +23,16 @@
           </q-list>
         </q-card>
       </div>
-      <div class="main-content">
-        <div class="news-container">
-          <div class="news-item" v-for="news in paginatedNews" :key="news.date">
-            <div class="news-date">{{ news.date }}</div>
+      <div class="col">
+        <div class="border-bloc column q-gutter-md">
+          <div
+            class="row no-wrap"
+            v-for="news in paginatedNews"
+            :key="news.date"
+          >
+            <div class="w-100 text-subtitle1 text-grey-7 shrink-0">
+              {{ news.date }}
+            </div>
             <div class="news-content">
               <h2 class="news-title">{{ news.title }}</h2>
               <div class="news-tags">
@@ -54,7 +62,7 @@
         </div>
       </div>
     </div>
-  </q-page>
+  </div>
 </template>
 
 <script setup>
@@ -163,41 +171,9 @@ function prevPage() {
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  gap: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.sidebar {
-  flex: 1;
-}
-
-.main-content {
-  flex: 3;
-}
-
-.news-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.news-item {
-  display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
+.border-bloc {
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 1.5rem;
-}
-
-.news-date {
-  font-size: 1rem;
-  color: #999;
-  flex-shrink: 0;
-  width: 100px;
 }
 
 .news-content {
@@ -240,9 +216,5 @@ function prevPage() {
   justify-content: space-between;
   align-items: center;
   margin-top: 2rem;
-}
-
-.text-bold {
-  font-weight: bold;
 }
 </style>
