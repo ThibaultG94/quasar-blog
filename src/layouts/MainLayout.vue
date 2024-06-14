@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hHh Lpr fff" :class="{ 'dark-mode': darkMode }">
-    <q-header class="max-w">
+    <div class="max-w">
       <div>
         <q-toolbar>
           <q-toolbar-title>
@@ -24,7 +24,7 @@
           />
         </q-toolbar>
       </div>
-    </q-header>
+    </div>
 
     <q-page-container class="max-w">
       <router-view />
