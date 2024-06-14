@@ -30,7 +30,7 @@
       <router-view />
     </q-page-container>
 
-    <div class="max-w">
+    <div class="max-w absolute-bottom">
       <q-toolbar class="justify-between">
         <q-toolbar-title class="text-caption">© 2024 Thiblog</q-toolbar-title>
         <q-btn flat label="CGU" to="/cgu" />

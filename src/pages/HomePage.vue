@@ -1,45 +1,43 @@
 <template>
-  <q-page>
-    <div class="q-px-lg">
-      <h1 class="text-h4 text-weight-bold q-mb-sm">Actu</h1>
-      <p class="q-mb-lg text-h6 text-weight-regular text-grey-8">
-        Découvrez toutes les actus web et tech, les dernières tendances, les
-        astuces et les conseils pour les développeurs web et mobiles.
-      </p>
-      <div class="column q-gutter-lg">
-        <div
-          class="row no-wrap q-gutter-sm q-pb-md border-news"
-          v-for="news in newsItems"
-          :key="news.date"
-        >
-          <div class="w-100 text-subtitle1 text-grey-7 shrink-0">
-            {{ news.date }}
+  <div class="q-px-lg">
+    <h1 class="text-h4 text-weight-bold q-mb-sm">Actu</h1>
+    <p class="q-mb-lg text-h6 text-weight-regular text-grey-8">
+      Découvrez toutes les actus web et tech, les dernières tendances, les
+      astuces et les conseils pour les développeurs web et mobiles.
+    </p>
+    <div class="column q-gutter-lg">
+      <div
+        class="row no-wrap q-gutter-sm q-pb-md border-news"
+        v-for="news in newsItems"
+        :key="news.date"
+      >
+        <div class="w-100 text-subtitle1 text-grey-7 shrink-0">
+          {{ news.date }}
+        </div>
+        <div>
+          <h2 class="text-h5 q-py-xs text-weight-bold q-mb-sm">
+            {{ news.title }}
+          </h2>
+          <div class="row wrap q-gutter-sm q-mb-sm">
+            <span
+              class="text-body2 text-accent"
+              v-for="tag in news.tags"
+              :key="tag"
+              >{{ tag }}</span
+            >
           </div>
-          <div>
-            <h2 class="text-h5 q-py-xs text-weight-bold q-mb-sm">
-              {{ news.title }}
-            </h2>
-            <div class="row wrap q-gutter-sm q-mb-sm">
-              <span
-                class="text-body2 text-accent"
-                v-for="tag in news.tags"
-                :key="tag"
-                >{{ tag }}</span
-              >
-            </div>
-            <p class="text-body1 q-mb-sm">
-              {{ news.description }}
-            </p>
-            <q-btn
-              flat
-              label="En savoir plus"
-              class="text-accent q-px-none text-weight-bold"
-            />
-          </div>
+          <p class="text-body1 q-mb-sm">
+            {{ news.description }}
+          </p>
+          <q-btn
+            flat
+            label="En savoir plus"
+            class="text-accent q-px-none text-weight-bold"
+          />
         </div>
       </div>
     </div>
-  </q-page>
+  </div>
 </template>
 
 <script setup>
@@ -74,6 +72,6 @@ const newsItems = [
 
 <style scoped>
 .border-news {
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #d8d8d8;
 }
 </style>
