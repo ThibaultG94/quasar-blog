@@ -1,30 +1,32 @@
 <template>
-  <div class="q-py-md">
+  <div class="q-pt-lg q-pb-xl">
     <div class="row q-gutter-x-md q-px-md">
       <div class="col-auto">
         <q-card>
-          <q-card-section>
-            <div class="text-h6 text-weight-bold text-uppercase">
-              Tous les Articles
-            </div>
-          </q-card-section>
-          <q-list dense>
-            <q-item
-              v-for="category in categories"
-              :key="category.name"
-              clickable
-            >
-              <q-item-section>
-                <q-item-label>
-                  {{ category.name }} <span>({{ category.count }})</span>
-                </q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
+          <div class="whity">
+            <q-card-section>
+              <div class="text-h6 text-weight-bold text-uppercase">
+                Tous les Articles
+              </div>
+            </q-card-section>
+            <q-list dense>
+              <q-item
+                v-for="category in categories"
+                :key="category.name"
+                clickable
+              >
+                <q-item-section>
+                  <q-item-label>
+                    {{ category.name }} <span>({{ category.count }})</span>
+                  </q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </div>
         </q-card>
       </div>
       <div class="col">
-        <div class="border-bloc column q-gutter-md">
+        <div class="q-pa-md q-pb-lg q-mb-none q-border-b column q-gutter-md">
           <div
             class="row no-wrap"
             v-for="news in paginatedNews"
@@ -33,15 +35,18 @@
             <div class="w-100 text-subtitle1 text-grey-7 shrink-0">
               {{ news.date }}
             </div>
-            <div class="news-content">
-              <h2 class="news-title">{{ news.title }}</h2>
-              <div class="news-tags">
-                <span class="news-tag" v-for="tag in news.tags" :key="tag">{{
-                  tag
-                }}</span>
+            <div class="col-grow-1">
+              <h2 class="q-mb-sm text-h5 text-weight-bold">{{ news.title }}</h2>
+              <div class="row items-start q-gutter-xs q-mb-sm">
+                <span
+                  class="text-body1 pinky text-uppercase"
+                  v-for="tag in news.tags"
+                  :key="tag"
+                  >{{ tag }}</span
+                >
               </div>
-              <p class="news-description">{{ news.description }}</p>
-              <q-btn flat label="En savoir plus" class="news-link" />
+              <p class="q-mb-sm text-subtitle1 darky">{{ news.description }}</p>
+              <q-btn flat label="En savoir plus" class="news-link pinky" />
             </div>
           </div>
         </div>
@@ -171,41 +176,7 @@ function prevPage() {
 </script>
 
 <style scoped>
-.border-bloc {
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 1.5rem;
-}
-
-.news-content {
-  flex-grow: 1;
-}
-
-.news-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.news-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.news-tag {
-  font-size: 0.875rem;
-  color: #f50057;
-}
-
-.news-description {
-  font-size: 1rem;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
 .news-link {
-  color: #f50057;
   padding-left: 0;
   padding-right: 0;
   font-weight: bold;

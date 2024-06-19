@@ -6,7 +6,7 @@
     --secondary: #00b4d8;
     --tertiary: #0077b6;
     --accent: #ff99c8;
-    --light: #e3faff;
+    --light: #ebfafd;
     --primary-dark: #1D000E;
     --dark-page: #000144;
 
@@ -23,7 +23,6 @@
     --dark-text: #FFFFFF;
 }
 
-
 body {
     font-family: 'Roboto', sans-serif;
     background-color: $light;
@@ -38,6 +37,18 @@ body {
 .body--dark {
     background-color: $dark-page;
     color: $light;
+}
+
+.whity {
+    background-color: #f8feff;
+}
+
+.pinky {
+    color: #f50057;
+}
+
+.darky {
+    color: #333;
 }
 
 .max-w {
