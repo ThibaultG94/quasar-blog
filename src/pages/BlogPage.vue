@@ -46,11 +46,18 @@
                 >
               </div>
               <p class="q-mb-sm text-subtitle1 darky">{{ news.description }}</p>
-              <q-btn flat label="En savoir plus" class="news-link pinky" />
+              <q-btn
+                flat
+                label="En savoir plus"
+                class="q-px-none pinky text-weight-bold"
+              />
             </div>
           </div>
         </div>
-        <div class="pagination" v-if="totalPages > 1">
+        <div
+          class="row justify-between items-center q-mt-lg"
+          v-if="totalPages > 1"
+        >
           <q-btn
             flat
             label="Précédent"
@@ -175,17 +182,4 @@ function prevPage() {
 }
 </script>
 
-<style scoped>
-.news-link {
-  padding-left: 0;
-  padding-right: 0;
-  font-weight: bold;
-}
-
-.pagination {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2rem;
-}
-</style>
+<style scoped></style>
