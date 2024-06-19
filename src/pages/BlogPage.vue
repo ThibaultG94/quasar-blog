@@ -39,7 +39,7 @@
               <h2 class="q-mb-sm text-h5 text-weight-bold">{{ news.title }}</h2>
               <div class="row items-start q-gutter-xs q-mb-sm">
                 <span
-                  class="text-body1 pinky text-uppercase"
+                  class="text-body1 text-accent text-uppercase"
                   v-for="tag in news.tags"
                   :key="tag"
                   >{{ tag }}</span
@@ -49,7 +49,7 @@
               <q-btn
                 flat
                 label="En savoir plus"
-                class="q-px-none pinky text-weight-bold"
+                class="q-px-none text-accent text-weight-bold"
               />
             </div>
           </div>
