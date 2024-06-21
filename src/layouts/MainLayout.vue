@@ -30,9 +30,9 @@
       <router-view />
     </q-page-container>
 
-    <div class="max-w absolute-bottom">
-      <q-toolbar class="justify-between">
-        <q-toolbar-title class="text-caption">© 2024 Thiblog</q-toolbar-title>
+    <footer class="q-mt-xl text-center text-grey-9">
+      <p class="text-caption q-mb-sm">Thiblog • © 2024 • Chroniques d'un dev</p>
+      <div class="row justify-center q-gutter-md">
         <q-btn flat label="CGU" to="/cgu" />
         <q-btn
           flat
@@ -58,8 +58,8 @@
           target="_blank"
           aria-label="Twitter"
         />
-      </q-toolbar>
-    </div>
+      </div>
+    </footer>
   </q-layout>
 </template>
 

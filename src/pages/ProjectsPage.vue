@@ -19,35 +19,6 @@
           </q-card-section>
         </q-card>
       </div>
-      <footer class="footer">
-        <p>Thibault Guilhem • © 2024 • Chroniques d'un dev</p>
-        <div class="social-links">
-          <q-btn
-            flat
-            round
-            icon="fab fa-twitter"
-            href="https://twitter.com/ThibaultG94"
-            target="_blank"
-            aria-label="Twitter"
-          />
-          <q-btn
-            flat
-            round
-            icon="fab fa-github"
-            href="https://github.com/ThibaultG94"
-            target="_blank"
-            aria-label="GitHub"
-          />
-          <q-btn
-            flat
-            round
-            icon="fab fa-linkedin"
-            href="https://linkedin.com/in/thibaultG94"
-            target="_blank"
-            aria-label="LinkedIn"
-          />
-        </div>
-      </footer>
     </div>
   </q-page>
 </template>
@@ -75,20 +46,4 @@ const projects = [
 ];
 </script>
 
-<style scoped>
-.footer {
-  margin-top: 3rem;
-  text-align: center;
-  color: #666;
-}
-
-.footer p {
-  margin-bottom: 0.5rem;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-</style>
+<style scoped></style>
