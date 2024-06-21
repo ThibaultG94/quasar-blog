@@ -7,14 +7,14 @@
           <q-card-section>
             <img :src="project.image" :alt="project.title" />
           </q-card-section>
-          <q-card-section>
+          <q-card-section class="q-pa-lg">
             <h2 class="text-h5 text-weight-bold">{{ project.title }}</h2>
-            <p class="project-description">{{ project.description }}</p>
+            <p class="text-subtitle1">{{ project.description }}</p>
             <q-btn
               flat
               label="En savoir plus"
               :href="project.link"
-              class="project-link"
+              class="text-accent text-weight-bold"
             />
           </q-card-section>
         </q-card>
@@ -76,19 +76,6 @@ const projects = [
 </script>
 
 <style scoped>
-.project-description {
-  font-size: 1rem;
-  color: #333;
-  margin: 1rem 0;
-}
-
-.project-link {
-  color: #f50057;
-  font-weight: bold;
-  padding-left: 0;
-  padding-right: 0;
-}
-
 .footer {
   margin-top: 3rem;
   text-align: center;
