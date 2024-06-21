@@ -30,9 +30,8 @@
       <router-view />
     </q-page-container>
 
-    <footer class="q-mt-xl text-center text-grey-9">
-      <p class="text-caption q-mb-sm">Thiblog • © 2024 • Chroniques d'un dev</p>
-      <div class="row justify-center q-gutter-md">
+    <footer class="q-mt-lg q-mb-sm text-center text-grey-9">
+      <div class="row justify-center q-gutter-md q-mb-sm">
         <q-btn flat label="CGU" to="/cgu" />
         <q-btn
           flat
@@ -59,6 +58,7 @@
           aria-label="Twitter"
         />
       </div>
+      <p class="text-caption">Thiblog • © 2024 • Chroniques d'un dev</p>
     </footer>
   </q-layout>
 </template>
