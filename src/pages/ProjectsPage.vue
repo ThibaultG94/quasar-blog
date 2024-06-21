@@ -1,18 +1,14 @@
 <template>
   <q-page class="q-py-md projects-page">
-    <div class="container">
-      <h1 class="title">Projets</h1>
-      <div class="projects-container">
-        <q-card
-          class="project-card"
-          v-for="project in projects"
-          :key="project.title"
-        >
-          <q-card-section class="project-image">
+    <div>
+      <h1 class="text-h3 text-weight-bold q-mb-xl">Projets</h1>
+      <div class="row no-wrap q-gutter-lg justify-center">
+        <q-card class="w-500" v-for="project in projects" :key="project.title">
+          <q-card-section>
             <img :src="project.image" :alt="project.title" />
           </q-card-section>
           <q-card-section>
-            <h2 class="project-title">{{ project.title }}</h2>
+            <h2 class="text-h5 text-weight-bold">{{ project.title }}</h2>
             <p class="project-description">{{ project.description }}</p>
             <q-btn
               flat
@@ -76,47 +72,10 @@ const projects = [
     image: "path/to/helium-image.jpg",
     link: "#",
   },
-  // Ajoute plus de projets ici si nécessaire
 ];
 </script>
 
 <style scoped>
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  text-align: center;
-}
-
-.title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-}
-
-.projects-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-}
-
-.project-card {
-  width: 100%;
-  max-width: 500px;
-}
-
-.project-image img {
-  width: 100%;
-  height: auto;
-}
-
-.project-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 1rem;
-}
-
 .project-description {
   font-size: 1rem;
   color: #333;

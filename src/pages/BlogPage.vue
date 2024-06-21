@@ -26,17 +26,15 @@
         </q-card>
       </div>
       <div class="col">
-        <div class="q-pa-md q-pb-lg q-mb-none q-border-b column q-gutter-md">
-          <div
-            class="row no-wrap"
-            v-for="news in paginatedNews"
-            :key="news.date"
-          >
-            <div class="w-100 text-subtitle1 text-grey-7 shrink-0">
+        <div class="q-pa-md q-mb-none q-border-b column q-gutter-md">
+          <div v-for="news in paginatedNews" :key="news.date" class="q-mb-lg">
+            <div class="text-subtitle1 text-grey-7">
               {{ news.date }}
             </div>
-            <div class="col-grow-1">
-              <h2 class="q-mb-sm text-h5 text-weight-bold">{{ news.title }}</h2>
+            <div>
+              <h2 class="q-mb-sm q-mt-none text-h5 text-weight-bold">
+                {{ news.title }}
+              </h2>
               <div class="row items-start q-gutter-xs q-mb-sm">
                 <span
                   class="text-body1 text-accent text-uppercase"

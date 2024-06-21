@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh Lpr fff" :class="{ 'dark-mode': darkMode }">
     <div class="max-w">
-      <div>
+      <div class="q-mt-md">
         <q-toolbar>
           <q-toolbar-title>
             <q-btn
