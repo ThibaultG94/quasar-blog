@@ -5,7 +5,7 @@
     --primary: #90e0ef;
     --secondary: #00b4d8;
     --tertiary: #0077b6;
-    --accent: #ff99c8;
+    --accent: #d33b82;
     --light: #fdfdfd;
     --primary-dark: #1D000E;
     --dark-page: #000144;
@@ -24,9 +24,18 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
     background-color: $light;
     color: #1D1D1D;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding: O;
+    margin: 0;
 }
 
 .body--light {
@@ -70,6 +79,10 @@ body {
 
 .h-150 {
     height: 150px;
+}
+
+.rounded {
+    border-radius: 50%;
 }
 
 .shrink-0 {

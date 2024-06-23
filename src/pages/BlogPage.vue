@@ -1,6 +1,6 @@
 <template>
-  <div class="q-pt-lg q-pb-xl">
-    <div class="row q-gutter-x-md q-px-md">
+  <div class="q-pt-lg q-pb-xl q-px-lg">
+    <div class="row q-gutter-x-md">
       <div class="col-auto">
         <q-card>
           <div class="whity">

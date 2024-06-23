@@ -1,7 +1,7 @@
 <template>
   <div class="q-px-lg">
-    <h1 class="text-h4 text-weight-bold q-mb-sm">Actu</h1>
-    <p class="q-mb-lg text-h6 text-weight-regular text-grey-8">
+    <h1 class="text-h3 text-weight-bold q-mb-md">Actu</h1>
+    <p class="q-mb-lg text-body1 text-weight-regular text-grey-8">
       Découvrez toutes les actus web et tech, les dernières tendances, les
       astuces et les conseils pour les développeurs web et mobiles.
     </p>
@@ -11,28 +11,28 @@
         v-for="news in newsItems"
         :key="news.date"
       >
-        <div class="w-100 text-subtitle1 text-grey-7 shrink-0">
+        <div class="w-150 text-subtitle1 text-grey-7 shrink-0">
           {{ news.date }}
         </div>
         <div>
-          <h2 class="text-h5 q-py-xs text-weight-bold q-mb-sm">
+          <h2 class="text-h5 text-weight-bold q-mb-xs">
             {{ news.title }}
           </h2>
           <div class="row wrap q-gutter-sm q-mb-sm">
             <span
-              class="text-body2 text-accent"
+              class="text-caption text-accent text-weight-medium"
               v-for="tag in news.tags"
               :key="tag"
               >{{ tag }}</span
             >
           </div>
-          <p class="text-body1 q-mb-sm">
+          <p class="text-body1 q-mt-lg q-mb-md text-grey-7">
             {{ news.description }}
           </p>
           <q-btn
             flat
             label="En savoir plus"
-            class="text-accent q-px-none text-weight-bold"
+            class="text-accent text-subtitle2 q-px-none text-weight-medium"
           />
         </div>
       </div>

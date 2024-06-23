@@ -1,24 +1,26 @@
 <template>
-  <q-page>
-    <h1 class="text-h3 text-weight-bold q-mb-xl">Projets</h1>
-    <div class="row no-wrap q-gutter-lg justify-center">
-      <q-card class="w-500" v-for="project in projects" :key="project.title">
-        <q-card-section>
-          <img :src="project.image" :alt="project.title" />
-        </q-card-section>
-        <q-card-section class="q-pa-lg">
-          <h2 class="text-h5 text-weight-bold">{{ project.title }}</h2>
-          <p class="text-subtitle1">{{ project.description }}</p>
-          <q-btn
-            flat
-            label="En savoir plus"
-            :href="project.link"
-            class="text-accent text-weight-bold"
-          />
-        </q-card-section>
-      </q-card>
-    </div>
-  </q-page>
+  <div class="q-px-lg">
+    <q-page>
+      <h1 class="text-h3 text-weight-bold q-mb-xl">Projets</h1>
+      <div class="row no-wrap q-gutter-lg justify-center">
+        <q-card class="w-500" v-for="project in projects" :key="project.title">
+          <q-card-section>
+            <img :src="project.image" :alt="project.title" />
+          </q-card-section>
+          <q-card-section class="q-pa-lg">
+            <h2 class="text-h5 text-weight-bold">{{ project.title }}</h2>
+            <p class="text-subtitle1">{{ project.description }}</p>
+            <q-btn
+              flat
+              label="En savoir plus"
+              :href="project.link"
+              class="text-accent text-weight-bold"
+            />
+          </q-card-section>
+        </q-card>
+      </div>
+    </q-page>
+  </div>
 </template>
 
 <script setup>
