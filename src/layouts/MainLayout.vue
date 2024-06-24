@@ -63,7 +63,7 @@
     </q-page-container>
 
     <footer
-      class="q-mt-lg q-mb-sm text-center"
+      class="q-mt-lg q-pb-sm text-center"
       :class="getTextColorClass('text-grey-9')"
     >
       <div class="row justify-center q-gutter-xs q-mb-sm">

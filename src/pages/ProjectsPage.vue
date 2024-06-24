@@ -3,7 +3,11 @@
     <q-page>
       <h1 class="text-h2 text-weight-bold q-pb-lg border-line">Projets</h1>
       <div class="row no-wrap q-gutter-lg q-pt-xl justify-center">
-        <q-card class="w-500" v-for="project in projects" :key="project.title">
+        <div
+          class="w-500 shadow-1"
+          v-for="project in projects"
+          :key="project.title"
+        >
           <div class="q-mb-md">
             <q-img
               position="center"
@@ -15,7 +19,9 @@
             <h2 class="text-h5 text-weight-bold q-mb-md">
               {{ project.title }}
             </h2>
-            <p class="text-subtitle1 text-grey-7">{{ project.description }}</p>
+            <p :class="getTextColorClass('text-grey-7')" class="text-subtitle1">
+              {{ project.description }}
+            </p>
             <q-btn
               flat
               label="En savoir plus"
@@ -25,15 +31,21 @@
               icon-right="arrow_forward"
             />
           </q-card-section>
-        </q-card>
+        </div>
       </div>
     </q-page>
   </div>
 </template>
 
 <script setup>
+import { ref } from "vue";
+
 defineOptions({
   name: "ProjectsPage",
+});
+
+const props = defineProps({
+  darkMode: Boolean,
 });
 
 const projects = [
@@ -52,6 +64,15 @@ const projects = [
     link: "#",
   },
 ];
+
+function getTextColorClass(lightClass) {
+  const darkModeMapping = {
+    "text-grey-7": "text-grey-6",
+    "text-grey-8": "text-grey-5",
+    "text-grey-9": "text-grey-4",
+  };
+  return props.darkMode ? darkModeMapping[lightClass] : lightClass;
+}
 </script>
 
 <style scoped></style>
