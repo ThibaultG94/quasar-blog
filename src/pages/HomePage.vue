@@ -41,6 +41,16 @@
         </div>
       </div>
     </div>
+    <div class="w-full text-right q-pt-sm">
+      <q-btn
+        flat
+        to="/blog"
+        label="Tous les articles"
+        class="text-accent text-subtitle1 q-px-none text-weight-bold text-right"
+        no-caps
+        icon-right="arrow_forward"
+      />
+    </div>
   </div>
 </template>
 
