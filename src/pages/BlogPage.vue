@@ -26,34 +26,29 @@
         </div>
       </div>
       <div class="col">
-        <div class="q-pa-md q-mb-none q-border-b column q-gutter-md">
+        <div class="q-py-md q-pl-xl q-mb-none q-border-b column q-gutter-md">
           <div v-for="news in paginatedNews" :key="news.date" class="q-mb-lg">
-            <div class="text-subtitle1 text-grey-7">
+            <div class="text-subtitle1 text-weight-medium text-grey-7">
               {{ news.date }}
             </div>
             <div>
-              <h2 class="q-mb-sm q-mt-none text-h5 text-weight-bold">
+              <h2 class="q-mb-xs q-mt-none text-h5 text-weight-bold">
                 {{ news.title }}
               </h2>
-              <div class="row items-start q-gutter-xs q-mb-sm">
+              <div class="row items-start q-gutter-xs q-mb-md">
                 <span
-                  class="text-body1 text-accent text-uppercase"
+                  class="text-body2 text-accent text-weight-bold text-uppercase"
                   v-for="tag in news.tags"
                   :key="tag"
                   >{{ tag }}</span
                 >
               </div>
               <p class="q-mb-sm text-subtitle1 darky">{{ news.description }}</p>
-              <q-btn
-                flat
-                label="En savoir plus"
-                class="q-px-none text-accent text-weight-bold"
-              />
             </div>
           </div>
         </div>
         <div
-          class="row justify-between items-center q-mt-lg"
+          class="row justify-between items-center q-mt-lg q-px-xl"
           v-if="totalPages > 1"
         >
           <q-btn
@@ -61,6 +56,7 @@
             label="Précédent"
             @click="prevPage"
             :disabled="currentPage === 1"
+            no-caps
           />
           <span>{{ currentPage }} de {{ totalPages }}</span>
           <q-btn
@@ -68,6 +64,7 @@
             label="Suivant"
             @click="nextPage"
             :disabled="currentPage === totalPages"
+            no-caps
           />
         </div>
       </div>
