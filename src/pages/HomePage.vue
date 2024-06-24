@@ -7,7 +7,7 @@
     </p>
     <div class="column q-gutter-lg">
       <div
-        class="row no-wrap q-gutter-sm q-pb-md border-news"
+        class="row no-wrap q-gutter-sm q-pb-md border-line"
         v-for="news in newsItems"
         :key="news.date"
       >
@@ -84,8 +84,4 @@ const newsItems = [
 ];
 </script>
 
-<style scoped>
-.border-news {
-  border-bottom: 1px solid #d8d8d8;
-}
-</style>
+<style scoped></style>
