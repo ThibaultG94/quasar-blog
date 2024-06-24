@@ -14,7 +14,12 @@
           <h2 class="text-h5 text-weight-bold q-mt-md q-mb-xs">
             Thibault Guilhem
           </h2>
-          <p class="text-subtitle1 text-grey-7 q-mb-sm">Développeur Web</p>
+          <p
+            :class="getTextColorClass('text-grey-7')"
+            class="text-subtitle1 q-mb-sm"
+          >
+            Développeur Web
+          </p>
           <div class="row no-wrap justify-center q-gutter-xs">
             <q-btn
               flat
@@ -44,15 +49,18 @@
             />
           </div>
         </div>
-        <div class="text-subtitle1 text-grey-9 col">
-          <p>
+        <div
+          :class="getTextColorClass('text-grey-9')"
+          class="text-subtitle1 col"
+        >
+          <p class="q-mb-lg">
             Je m'appelle Thibault Guilhem, développeur web autodidacte passionné
             par les technologies modernes du web. Après avoir exploré divers
             domaines professionnels, notamment en tant que géomètre topographe,
             jardinier paysagiste et monteur, j’ai trouvé ma véritable vocation
             dans le développement web.
           </p>
-          <p>
+          <p class="q-mb-lg">
             Depuis bientôt deux ans, je me forme intensivement en autodidacte et
             ai acquis des compétences solides en Next.js, React, Node.js,
             TypeScript, Tailwind CSS, et MongoDB. Mon projet principal est le
@@ -61,7 +69,7 @@
             sécurisée. Cette application permet d’organiser des tâches
             individuelles ou en groupe au sein de différents espaces de travail.
           </p>
-          <p>
+          <p class="q-mb-lg">
             En dehors du code, je suis un grand amateur de cinéma et de musique.
             J’aime aussi suivre de près les avancées dans le domaine de
             l’intelligence artificielle, notamment avec des outils comme ChatGPT
@@ -79,9 +87,24 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+
 defineOptions({
   name: "AboutPage",
 });
+
+const props = defineProps({
+  darkMode: Boolean,
+});
+
+function getTextColorClass(lightClass) {
+  const darkModeMapping = {
+    "text-grey-7": "text-grey-6",
+    "text-grey-8": "text-grey-5",
+    "text-grey-9": "text-grey-4",
+  };
+  return props.darkMode ? darkModeMapping[lightClass] : lightClass;
+}
 </script>
 
 <style scoped></style>
