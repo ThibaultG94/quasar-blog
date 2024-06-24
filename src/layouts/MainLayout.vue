@@ -58,15 +58,14 @@
     </q-page-container>
 
     <footer class="q-mt-lg q-mb-sm text-center text-grey-9">
-      <div class="row justify-center q-gutter-md q-mb-sm">
-        <q-btn flat label="CGU" to="/cgu" />
+      <div class="row justify-center q-gutter-xs q-mb-sm">
         <q-btn
           flat
           round
-          icon="fab fa-linkedin"
-          href="https://linkedin.com/in/thibaultG94"
+          icon="fa fa-envelope"
+          href="https://twitter.com/ThibaultG94"
           target="_blank"
-          aria-label="LinkedIn"
+          aria-label="Twitter"
         />
         <q-btn
           flat
@@ -79,13 +78,16 @@
         <q-btn
           flat
           round
-          icon="fab fa-twitter"
-          href="https://twitter.com/ThibaultG94"
+          icon="fab fa-linkedin"
+          href="https://linkedin.com/in/thibaultG94"
           target="_blank"
-          aria-label="Twitter"
+          aria-label="LinkedIn"
         />
       </div>
-      <p class="text-caption">Thiblog • © 2024 • Chroniques d'un dev</p>
+      <p class="text-body2 text-grey-8">
+        Thiblog • © 2024 • Chroniques d'un dev
+      </p>
+      <q-btn flat label="CGU" to="/cgu" class="q-pa-none text-grey-7" />
     </footer>
   </q-layout>
 </template>
