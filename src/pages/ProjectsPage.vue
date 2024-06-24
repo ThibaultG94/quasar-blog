@@ -22,6 +22,7 @@
               :href="project.link"
               class="text-body1 text-accent text-weight-medium q-pl-none q-pt-md"
               no-caps
+              icon-right="arrow_forward"
             />
           </q-card-section>
         </q-card>

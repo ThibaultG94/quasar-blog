@@ -2,7 +2,17 @@
   <div class="q-pt-lg q-pb-xl q-px-lg">
     <div class="row q-gutter-x-md">
       <div class="col-auto">
-        <div class="whity w-250 q-pt-md q-pl-sm rounded-borders max-h">
+        <div
+          :class="[
+            'whity',
+            'w-250',
+            'q-pt-md',
+            'q-pl-sm',
+            'rounded-borders',
+            'max-h',
+            darkMode ? 'whity--dark' : 'whity--light',
+          ]"
+        >
           <q-card-section class="q-py-md">
             <div
               class="text-body1 text-weight-bolder text-uppercase text-accent"
@@ -17,7 +27,10 @@
               clickable
             >
               <q-item-section>
-                <q-item-label class="text-grey-7 q-pb-md">
+                <q-item-label
+                  :class="getTextColorClass('text-grey-7')"
+                  class="q-pb-md"
+                >
                   {{ category.name }} <span>({{ category.count }})</span>
                 </q-item-label>
               </q-item-section>
@@ -28,11 +41,14 @@
       <div class="col">
         <div class="q-py-md q-pl-xl q-mb-none q-border-b column q-gutter-md">
           <div v-for="news in paginatedNews" :key="news.date" class="q-mb-lg">
-            <div class="text-subtitle1 text-weight-medium text-grey-7">
+            <div
+              :class="getTextColorClass('text-grey-7')"
+              class="text-subtitle1 text-weight-medium"
+            >
               {{ news.date }}
             </div>
             <div>
-              <h2 class="q-mb-xs q-mt-none text-h5 text-weight-bold">
+              <h2 class="text-h5 text-weight-bold q-mb-xs q-mt-none">
                 {{ news.title }}
               </h2>
               <div class="row items-start q-gutter-xs q-mb-md">
@@ -40,10 +56,16 @@
                   class="text-body2 text-accent text-weight-bold text-uppercase"
                   v-for="tag in news.tags"
                   :key="tag"
-                  >{{ tag }}</span
                 >
+                  {{ tag }}
+                </span>
               </div>
-              <p class="q-mb-sm text-subtitle1 darky">{{ news.description }}</p>
+              <p
+                :class="getTextColorClass('text-grey-7')"
+                class="q-mb-sm text-subtitle1 darky"
+              >
+                {{ news.description }}
+              </p>
             </div>
           </div>
         </div>
@@ -77,6 +99,10 @@ import { ref, computed } from "vue";
 
 defineOptions({
   name: "BlogPage",
+});
+
+const props = defineProps({
+  darkMode: Boolean,
 });
 
 const categories = [
@@ -174,6 +200,15 @@ function prevPage() {
   if (currentPage.value > 1) {
     currentPage.value--;
   }
+}
+
+function getTextColorClass(lightClass) {
+  const darkModeMapping = {
+    "text-grey-7": "text-grey-6",
+    "text-grey-8": "text-grey-5",
+    "text-grey-9": "text-grey-4",
+  };
+  return props.darkMode ? darkModeMapping[lightClass] : lightClass;
 }
 </script>
 

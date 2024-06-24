@@ -1,7 +1,10 @@
 <template>
   <div class="q-px-lg q-pt-xl">
     <h1 class="text-h2 text-weight-bold q-mb-md">Actu</h1>
-    <p class="q-mb-lg text-h6 text-weight-regular text-grey-8">
+    <p
+      class="q-mb-lg text-h6 text-weight-regular"
+      :class="getTextColorClass('text-grey-8')"
+    >
       Découvrez toutes les actus web et tech, les dernières tendances, les
       astuces et les conseils pour les développeurs web et mobiles.
     </p>
@@ -12,7 +15,8 @@
         :key="news.date"
       >
         <div
-          class="w-150 text-subtitle1 text-weight-medium text-grey-7 shrink-0"
+          class="w-150 text-subtitle1 text-weight-medium shrink-0"
+          :class="getTextColorClass('text-grey-7')"
         >
           {{ news.date }}
         </div>
@@ -28,7 +32,10 @@
               >{{ tag }}</span
             >
           </div>
-          <p class="text-body1 q-mt-lg q-mb-md text-grey-7">
+          <p
+            class="text-body1 q-mt-lg q-mb-md"
+            :class="getTextColorClass('text-grey-7')"
+          >
             {{ news.description }}
           </p>
           <q-btn
@@ -55,8 +62,14 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+
 defineOptions({
   name: "HomePage",
+});
+
+const props = defineProps({
+  darkMode: Boolean,
 });
 
 const newsItems = [
@@ -82,6 +95,15 @@ const newsItems = [
       "Un aperçu des nouvelles fonctionnalités de la v1 - copie de blocs de code, auteurs multiples, mise en page du frontmatter, etc.",
   },
 ];
+
+function getTextColorClass(lightClass) {
+  const darkModeMapping = {
+    "text-grey-7": "text-grey-6",
+    "text-grey-8": "text-grey-5",
+    "text-grey-9": "text-grey-4",
+  };
+  return props.darkMode ? darkModeMapping[lightClass] : lightClass;
+}
 </script>
 
 <style scoped></style>

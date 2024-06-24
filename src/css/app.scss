@@ -5,7 +5,7 @@
     --primary: #90e0ef;
     --secondary: #00b4d8;
     --tertiary: #0077b6;
-    --accent: #d33b82;
+    --accent: #ec62c4;
     --light: #fdfdfd;
     --primary-dark: #1D000E;
     --dark-page: #000144;
@@ -49,8 +49,12 @@ p {
     color: $light;
 }
 
-.whity {
+.whity--light {
     background-color: #f3fafc;
+}
+
+.whity--dark {
+    background-color: #000f2b;
 }
 
 .pinky {
