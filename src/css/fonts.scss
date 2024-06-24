@@ -6,3 +6,31 @@ body {
     font-weight: 500;
     font-style: normal;
 }
+
+.text-size-h5 {
+    @media screen and (min-width: 0px) {
+        font-size: 1rem;
+    }
+
+    @media screen and (min-width: 600px) {
+        font-size: 1.2rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+        font-size: 1.5rem;
+    }
+}
+
+.text-size-subtitle1 {
+    @media screen and (min-width: 0px) {
+        font-size: 0.8rem;
+    }
+
+    @media screen and (min-width: 600px) {
+        font-size: 1rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+        font-size: 1.1rem;
+    }
+}

@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh Lpr fff" :class="{ 'dark-mode': darkMode }">
     <div class="max-w">
-      <div class="q-pt-lg">
+      <div class="q-pt-xs-sm q-pt-sm-md q-pt-md-lg">
         <q-toolbar>
           <q-toolbar-title>
             <q-btn
@@ -9,7 +9,7 @@
               label="ThiBlog"
               icon="laptop"
               to="/"
-              class="text-h5 text-weight-bold"
+              class="text-size-h5 text-weight-bold"
               no-caps
             />
           </q-toolbar-title>
@@ -18,7 +18,7 @@
             label="Blog"
             to="/blog"
             no-caps
-            class="text-subtitle1 text-weight-medium"
+            class="text-size-subtitle1 text-weight-medium"
             :class="getTextColorClass('text-grey-7')"
           />
           <q-btn
@@ -26,7 +26,7 @@
             label="Projets"
             to="/projects"
             no-caps
-            class="text-subtitle1 text-weight-medium"
+            class="text-size-subtitle1 text-weight-medium"
             :class="getTextColorClass('text-grey-7')"
           />
           <q-btn
@@ -34,7 +34,7 @@
             label="À propos"
             to="/about"
             no-caps
-            class="text-subtitle1 text-weight-medium"
+            class="text-size-subtitle1 text-weight-medium"
             :class="getTextColorClass('text-grey-7')"
           />
           <q-btn
@@ -43,7 +43,7 @@
             icon="search"
             aria-label="Search"
             no-caps
-            class="text-subtitle1"
+            class="text-size-subtitle1"
             :class="getTextColorClass('text-grey-7')"
           />
           <q-btn
