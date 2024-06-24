@@ -2,28 +2,28 @@
   <div class="q-pt-lg q-pb-xl q-px-lg">
     <div class="row q-gutter-x-md">
       <div class="col-auto">
-        <q-card>
-          <div class="whity">
-            <q-card-section>
-              <div class="text-h6 text-weight-bold text-uppercase">
-                Tous les Articles
-              </div>
-            </q-card-section>
-            <q-list dense>
-              <q-item
-                v-for="category in categories"
-                :key="category.name"
-                clickable
-              >
-                <q-item-section>
-                  <q-item-label>
-                    {{ category.name }} <span>({{ category.count }})</span>
-                  </q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-          </div>
-        </q-card>
+        <div class="whity w-250 q-pt-md q-pl-sm rounded-borders max-h">
+          <q-card-section class="q-py-md">
+            <div
+              class="text-body1 text-weight-bolder text-uppercase text-accent"
+            >
+              Tous les Articles
+            </div>
+          </q-card-section>
+          <q-list dense class="q-pl-md">
+            <q-item
+              v-for="category in categories"
+              :key="category.name"
+              clickable
+            >
+              <q-item-section>
+                <q-item-label class="text-grey-7 q-pb-md">
+                  {{ category.name }} <span>({{ category.count }})</span>
+                </q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </div>
       </div>
       <div class="col">
         <div class="q-pa-md q-mb-none q-border-b column q-gutter-md">
