@@ -40,7 +40,7 @@
             icon="search"
             aria-label="Search"
             no-caps
-            class="text-subtitle1 text-weight-medium"
+            class="text-subtitle1"
           />
           <q-btn
             flat
