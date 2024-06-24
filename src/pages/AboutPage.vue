@@ -1,25 +1,28 @@
 <template>
-  <div class="q-px-lg">
+  <div class="q-px-lg q-pt-xl q-pb-lg">
     <q-page>
-      <h1 class="text-h3 text-weight-bold q-mb-xl">About</h1>
-      <div class="row no-wrap q-gutter-lg">
-        <div class="text-center">
-          <div class="w-150 h-150 q-mx-auto q-mb-sm">
+      <h1 class="text-h2 text-weight-bold q-pb-xl border-line">About</h1>
+      <div class="row no-wrap q-gutter-lg q-mt-sm">
+        <div class="text-center col-3">
+          <div class="w-200 h-200 q-mx-auto q-mb-sm">
             <img
               src="/public/img/avatar.png"
               alt="Profile Picture"
-              class="w-150 h-150 rounded"
+              class="w-200 h-200 rounded"
             />
           </div>
-          <h2 class="text-h5 text-weight-bold">Thibault Guilhem</h2>
-          <p class="text-subtitle1 text-grey-6">Développeur Web</p>
+          <h2 class="text-h5 text-weight-bold q-mt-md q-mb-xs">
+            Thibault Guilhem
+          </h2>
+          <p class="text-subtitle1 text-grey-7 q-mb-sm">Développeur Web</p>
           <div class="row no-wrap justify-center q-gutter-xs">
             <q-btn
               flat
               round
-              icon="mail"
+              icon="fa fa-envelope"
               aria-label="Email"
-              href="mailto:email@example.com"
+              href="mailto:thibault.guilhem@gmail.com"
+              class="text-body1"
             />
             <q-btn
               flat
@@ -28,6 +31,7 @@
               aria-label="GitHub"
               href="https://github.com/ThibaultG94"
               target="_blank"
+              class="text-body1"
             />
             <q-btn
               flat
@@ -36,18 +40,11 @@
               aria-label="LinkedIn"
               href="https://linkedin.com/in/thibaultG94"
               target="_blank"
-            />
-            <q-btn
-              flat
-              round
-              icon="fab fa-xing"
-              aria-label="Xing"
-              href="https://www.xing.com/profile/Thibault_Guilhem"
-              target="_blank"
+              class="text-body1"
             />
           </div>
         </div>
-        <div class="text-subtitle1 text-grey-9">
+        <div class="text-subtitle1 text-grey-9 col">
           <p>
             Je m'appelle Thibault Guilhem, développeur web autodidacte passionné
             par les technologies modernes du web. Après avoir exploré divers
