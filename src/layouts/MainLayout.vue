@@ -1,20 +1,47 @@
 <template>
   <q-layout view="hHh Lpr fff" :class="{ 'dark-mode': darkMode }">
     <div class="max-w">
-      <div class="q-mt-md">
+      <div class="q-pt-lg">
         <q-toolbar>
           <q-toolbar-title>
             <q-btn
               flat
               label="ThiBlog"
+              icon="laptop"
               to="/"
-              class="text-h6 text-weight bold text-uppercase"
+              class="text-h5 text-weight-bold"
+              no-caps
             />
           </q-toolbar-title>
-          <q-btn flat label="Blog" to="/blog" />
-          <q-btn flat label="Projets" to="/projects" />
-          <q-btn flat label="À propos" to="/about" />
-          <q-btn flat round icon="search" aria-label="Search" />
+          <q-btn
+            flat
+            label="Blog"
+            to="/blog"
+            no-caps
+            class="text-subtitle1 text-weight-medium"
+          />
+          <q-btn
+            flat
+            label="Projets"
+            to="/projects"
+            no-caps
+            class="text-subtitle1 text-weight-medium"
+          />
+          <q-btn
+            flat
+            label="À propos"
+            to="/about"
+            no-caps
+            class="text-subtitle1 text-weight-medium"
+          />
+          <q-btn
+            flat
+            round
+            icon="search"
+            aria-label="Search"
+            no-caps
+            class="text-subtitle1 text-weight-medium"
+          />
           <q-btn
             flat
             round
