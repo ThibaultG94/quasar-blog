@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh Lpr fff" :class="{ 'dark-mode': darkMode }">
+  <q-layout view="lhr lpr lfr" :class="{ 'dark-mode': darkMode }">
     <div class="max-w">
       <div class="q-pt-xs-sm q-pt-sm-md q-pt-md-lg">
         <q-toolbar>
@@ -8,12 +8,13 @@
               flat
               label="ThiBlog"
               icon="laptop"
-              to="/"
+              to="/home"
               class="text-size-h5 text-weight-bold"
               no-caps
             />
           </q-toolbar-title>
           <q-btn
+            v-if="!isMobile"
             flat
             label="Blog"
             to="/blog"
@@ -22,6 +23,7 @@
             :class="getTextColorClass('text-grey-7')"
           />
           <q-btn
+            v-if="!isMobile"
             flat
             label="Projets"
             to="/projects"
@@ -30,6 +32,7 @@
             :class="getTextColorClass('text-grey-7')"
           />
           <q-btn
+            v-if="!isMobile"
             flat
             label="À propos"
             to="/about"
@@ -43,7 +46,7 @@
             icon="search"
             aria-label="Search"
             no-caps
-            class="text-size-subtitle1 option-btn"
+            class="text-size-subtitle1"
             :class="getTextColorClass('text-grey-7')"
           />
           <q-btn
@@ -54,9 +57,51 @@
             aria-label="Dark Mode"
             :class="getTextColorClass('text-grey-7')"
           />
+          <q-btn
+            flat
+            dense
+            icon="menu"
+            v-if="isMobile"
+            @click="leftDrawerOpen = !leftDrawerOpen"
+          />
         </q-toolbar>
       </div>
     </div>
+
+    <q-drawer
+      v-model="leftDrawerOpen"
+      show-if-above
+      side="right"
+      behavior="mobile"
+      :width="450"
+    >
+      <q-toolbar>
+        <q-btn
+          flat
+          dense
+          icon="close"
+          @click="leftDrawerOpen = false"
+          aria-label="Close Drawer"
+          class="close-btn"
+        />
+      </q-toolbar>
+      <q-list>
+        <div class="w-150">
+          <q-item clickable v-ripple to="/home">
+            <q-item-section>Accueil</q-item-section>
+          </q-item>
+          <q-item clickable v-ripple to="/blog">
+            <q-item-section>Blog</q-item-section>
+          </q-item>
+          <q-item clickable v-ripple to="/projects">
+            <q-item-section>Projets</q-item-section>
+          </q-item>
+          <q-item clickable v-ripple to="/about">
+            <q-item-section>À propos</q-item-section>
+          </q-item>
+        </div>
+      </q-list>
+    </q-drawer>
 
     <q-page-container class="max-w">
       <router-view :dark-mode="darkMode" />
@@ -106,6 +151,8 @@
         :class="getTextColorClass('text-grey-7')"
       />
     </footer>
+
+    <q-resize-observer @resize="onResize" />
   </q-layout>
 </template>
 
@@ -119,6 +166,8 @@ defineOptions({
 
 const $q = useQuasar();
 const darkMode = ref($q.dark.isActive);
+const leftDrawerOpen = ref(false);
+const isMobile = ref(window.innerWidth <= 600);
 
 function toggleDarkMode() {
   $q.dark.toggle();
@@ -133,6 +182,10 @@ function getTextColorClass(lightClass) {
   };
   return darkMode.value ? darkModeMapping[lightClass] : lightClass;
 }
+
+function onResize({ width }) {
+  isMobile.value = width <= 600;
+}
 </script>
 
 <style scoped lang="scss">
@@ -141,15 +194,42 @@ function getTextColorClass(lightClass) {
   color: var(--dark-text);
 }
 
-.option-btn {
-  @media (max-width: 400px) {
-    display: none;
-  }
-}
-
 .q-btn {
   @media (max-width: 400px) {
     padding: 4px 8px;
   }
+}
+
+.fit {
+  min-width: 100vw;
+}
+
+.close-btn {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  font-size: 1.3rem;
+}
+
+.q-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  padding-top: 32px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.q-drawer {
+  background-color: #ccc;
+  width: 310px !important;
+}
+
+.q-item__section,
+a {
+  text-align: left;
+  padding: 0;
 }
 </style>

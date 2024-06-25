@@ -1,14 +1,16 @@
 <template>
-  <div class="q-px-lg q-pt-xl">
-    <h1 class="text-h2 text-weight-bold q-mb-md">Actu</h1>
+  <div class="q-px-xs-md q-px-sm-lg q-pt-xl">
+    <h1 class="text-size-h2 text-weight-bold q-mb-xs-xs q-mb-sm-sm q-mb-md-md">
+      Actu
+    </h1>
     <p
-      class="q-mb-lg text-h6 text-weight-regular"
+      class="q-pb-lg text-size-h6 text-weight-regular border-line"
       :class="getTextColorClass('text-grey-8')"
     >
       Découvrez toutes les actus web et tech, les dernières tendances, les
       astuces et les conseils pour les développeurs web et mobiles.
     </p>
-    <div class="column q-gutter-lg">
+    <div class="column q-gutter-lg q-pt-lg">
       <div
         class="row no-wrap q-gutter-sm q-pb-md border-line"
         v-for="news in newsItems"
