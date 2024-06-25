@@ -1,7 +1,7 @@
 <template>
-  <div class="q-px-lg q-pt-xl q-pb-lg">
+  <div class="q-px-xs-md q-px-sm-lg q-pt-xl q-pb-lg">
     <q-page>
-      <h1 class="text-h2 text-weight-bold q-pb-xl border-line">About</h1>
+      <h1 class="text-size-h2 text-weight-bold q-pb-xl border-line">About</h1>
       <div class="row no-wrap q-gutter-lg q-mt-sm">
         <div class="text-center col-3">
           <div class="w-200 h-200 q-mx-auto q-mb-sm">
