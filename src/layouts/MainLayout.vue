@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lhr lpr lfr" :class="{ 'dark-mode': darkMode }">
     <div class="max-w">
-      <div class="q-pt-xs-sm q-pt-sm-md q-pt-md-lg">
+      <div class="q-pt-lg">
         <q-toolbar>
           <q-toolbar-title>
             <q-btn
@@ -55,12 +55,14 @@
             icon="brightness_6"
             @click="toggleDarkMode"
             aria-label="Dark Mode"
+            class="text-size-subtitle1"
             :class="getTextColorClass('text-grey-7')"
           />
           <q-btn
             flat
             dense
             icon="menu"
+            class="text-size-subtitle1"
             v-if="isMobile"
             @click="leftDrawerOpen = !leftDrawerOpen"
           />
@@ -220,16 +222,5 @@ function onResize({ width }) {
   padding-top: 32px;
   font-weight: 600;
   text-align: left;
-}
-
-.q-drawer {
-  background-color: #ccc;
-  width: 310px !important;
-}
-
-.q-item__section,
-a {
-  text-align: left;
-  padding: 0;
 }
 </style>
