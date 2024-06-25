@@ -12,7 +12,7 @@
     </p>
     <div class="column q-gutter-lg q-pt-lg">
       <div
-        class="row no-wrap q-gutter-sm q-pb-md border-line"
+        class="col-to-row no-wrap q-gutter-sm q-pb-md border-line"
         v-for="news in newsItems"
         :key="news.date"
       >

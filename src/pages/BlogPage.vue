@@ -1,7 +1,7 @@
 <template>
-  <div class="q-pt-lg q-pb-xl q-px-lg">
+  <div class="q-px-xs-none q-px-sm-lg q-pt-xl">
     <div class="row q-gutter-x-md">
-      <div class="col-auto">
+      <div class="col-auto gt-xs">
         <div
           :class="[
             'whity',
@@ -20,7 +20,7 @@
               Tous les Articles
             </div>
           </q-card-section>
-          <q-list dense class="q-pl-md">
+          <q-list dense class="q-pl-lg-md">
             <q-item
               v-for="category in categories"
               :key="category.name"
@@ -39,7 +39,9 @@
         </div>
       </div>
       <div class="col">
-        <div class="q-py-md q-pl-xl q-mb-none q-border-b column q-gutter-md">
+        <div
+          class="q-py-md q-pl-xs-lg q-pl-lg-xl q-mb-none q-border-b column q-gutter-md"
+        >
           <div v-for="news in paginatedNews" :key="news.date" class="q-mb-lg">
             <div
               :class="getTextColorClass('text-grey-7')"
@@ -70,7 +72,7 @@
           </div>
         </div>
         <div
-          class="row justify-between items-center q-mt-lg q-px-xl"
+          class="row justify-between items-center q-mt-lg q-px-md-lg q-px-lg-xl"
           v-if="totalPages > 1"
         >
           <q-btn

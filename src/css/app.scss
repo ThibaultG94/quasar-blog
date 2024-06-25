@@ -123,3 +123,12 @@ p {
 .shrink-0 {
     flex-shrink: 0;
 }
+
+.col-to-row {
+    display: flex;
+    flex-direction: row;
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+    }
+}
