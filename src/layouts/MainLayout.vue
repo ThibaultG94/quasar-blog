@@ -13,47 +13,49 @@
               no-caps
             />
           </q-toolbar-title>
-          <q-btn
-            flat
-            label="Blog"
-            to="/blog"
-            no-caps
-            class="text-size-subtitle1 text-weight-medium"
-            :class="getTextColorClass('text-grey-7')"
-          />
-          <q-btn
-            flat
-            label="Projets"
-            to="/projects"
-            no-caps
-            class="text-size-subtitle1 text-weight-medium"
-            :class="getTextColorClass('text-grey-7')"
-          />
-          <q-btn
-            flat
-            label="À propos"
-            to="/about"
-            no-caps
-            class="text-size-subtitle1 text-weight-medium"
-            :class="getTextColorClass('text-grey-7')"
-          />
-          <q-btn
-            flat
-            round
-            icon="search"
-            aria-label="Search"
-            no-caps
-            class="text-size-subtitle1"
-            :class="getTextColorClass('text-grey-7')"
-          />
-          <q-btn
-            flat
-            round
-            icon="brightness_6"
-            @click="toggleDarkMode"
-            aria-label="Dark Mode"
-            :class="getTextColorClass('text-grey-7')"
-          />
+          <div class="q-btn-wrapper">
+            <q-btn
+              flat
+              label="Blog"
+              to="/blog"
+              no-caps
+              class="text-size-subtitle1 text-weight-medium"
+              :class="getTextColorClass('text-grey-7')"
+            />
+            <q-btn
+              flat
+              label="Projets"
+              to="/projects"
+              no-caps
+              class="text-size-subtitle1 text-weight-medium"
+              :class="getTextColorClass('text-grey-7')"
+            />
+            <q-btn
+              flat
+              label="À propos"
+              to="/about"
+              no-caps
+              class="text-size-subtitle1 text-weight-medium"
+              :class="getTextColorClass('text-grey-7')"
+            />
+            <q-btn
+              flat
+              round
+              icon="search"
+              aria-label="Search"
+              no-caps
+              class="text-size-subtitle1 option-btn"
+              :class="getTextColorClass('text-grey-7')"
+            />
+            <q-btn
+              flat
+              round
+              icon="brightness_6"
+              @click="toggleDarkMode"
+              aria-label="Dark Mode"
+              :class="getTextColorClass('text-grey-7')"
+            />
+          </div>
         </q-toolbar>
       </div>
     </div>
@@ -139,5 +141,17 @@ function getTextColorClass(lightClass) {
 .dark-mode {
   background-color: var(--dark-background);
   color: var(--dark-text);
+}
+
+.option-btn {
+  @media (max-width: 400px) {
+    display: none;
+  }
+}
+
+.q-btn {
+  @media (max-width: 400px) {
+    padding: 4px 8px;
+  }
 }
 </style>
