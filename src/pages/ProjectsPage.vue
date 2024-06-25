@@ -1,8 +1,10 @@
 <template>
-  <div class="q-px-lg q-py-xl">
+  <div class="q-px-xs-md q-px-sm-lg q-pt-xl">
     <q-page>
-      <h1 class="text-h2 text-weight-bold q-pb-lg border-line">Projets</h1>
-      <div class="row no-wrap q-gutter-lg q-pt-xl justify-center">
+      <h1 class="text-size-h2 text-weight-bold q-pb-lg border-line">Projets</h1>
+      <div
+        class="col-to-row no-wrap q-gutter-lg q-mx-xs-auto q-mx-sm-none q-pt-xl justify-center"
+      >
         <div
           class="w-500 shadow-1"
           v-for="project in projects"

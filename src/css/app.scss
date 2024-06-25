@@ -102,6 +102,21 @@ p {
 
 .w-500 {
     width: 500px;
+
+    @media screen and (max-width: 600px) {
+        width: 450px;
+        margin: 0 auto;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    @media screen and (max-width: 400px) {
+        width: 250px;
+        margin: 0 auto;
+    }
 }
 
 .h-150 {
