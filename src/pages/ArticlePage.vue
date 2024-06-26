@@ -116,33 +116,33 @@ const articles = ref([
       "Dans cet article, je vous présente mon parcours, mes compétences, et les projets sur lesquels je travaille, notamment mon application 'Task Manager'.",
     slug: "bienvenue-sur-mon-blog",
     content: `
-        <h2>Bienvenue sur mon Blog - Le Début d’une Nouvelle Aventure</h2>
-        <p>Salut à tous et bienvenue sur mon blog ! Je m’appelle Thibault Guilhem, et je suis un développeur web autodidacte passionné par les technologies modernes du web. Ce blog est l’aboutissement de plusieurs années de travail acharné et de passion pour le développement web.</p>
-        <h3>Pourquoi ce blog ?</h3>
-        <p>L’idée de créer ce blog m’est venue après avoir passé des heures à lire et à apprendre des blogs de développeurs, à regarder des tutoriels et à expérimenter avec divers projets. J’ai réalisé que partager mes connaissances, mes découvertes et mes expériences pourrait non seulement aider d’autres développeurs en herbe, mais aussi me permettre de continuer à apprendre et à grandir dans ce domaine.</p>
-        <h3>Les Sujets Abordés</h3>
-        <h4>Développement Web</h4>
-        <p>Vous trouverez ici des articles détaillés sur le développement web, couvrant des technologies comme Next.js, React, Node.js, TypeScript, Tailwind CSS, et MongoDB. Que vous soyez débutant ou développeur expérimenté, j’espère que vous trouverez des informations utiles et inspirantes.</p>
-        <h4>Projets Personnels</h4>
-        <p>Je partagerai également des mises à jour régulières sur mes projets personnels, notamment Task Manager. Vous pourrez suivre l’évolution de ce projet, découvrir les défis que je rencontre et les solutions que je mets en place. J’entrerai dans les détails techniques pour vous montrer comment j’utilise ces technologies pour créer des applications performantes et sécurisées.</p>
-        <h4>Astuces et Bonnes Pratiques</h4>
-        <p>En plus des projets et des tutoriels, je partagerai des astuces et des bonnes pratiques que j’ai découvertes au fil de mes expériences. Que ce soit des conseils pour optimiser votre code, améliorer la sécurité de vos applications ou simplement des raccourcis pour être plus efficace, il y aura toujours quelque chose de nouveau à apprendre.</p>
-        <h4>Intelligence Artificielle et Outils Modernes</h4>
-        <p>Étant un grand amateur des avancées technologiques, j’écrirai également sur des sujets comme l’intelligence artificielle et des outils modernes tels que ChatGPT et Copilot. Ces outils m’ont aidé à améliorer ma productivité et à explorer de nouvelles possibilités dans le développement web.</p>
-        <h4>Cinéma et Musique</h4>
-        <p>Enfin, parce qu’un développeur a aussi besoin de se détendre, je partagerai mes coups de cœur cinéma et musique. C’est toujours intéressant de découvrir de nouvelles perspectives et de s’inspirer de différents domaines artistiques.</p>
-        <h3>Mon Premier Grand Projet : Task Manager</h3>
-        <p>Je suis particulièrement fier de mon projet Task Manager, une application de gestion de tâches conçue pour être performante et sécurisée. Voici quelques-unes des fonctionnalités clés que vous pouvez attendre :</p>
+        <h4 class="text-weight-bold q-mb-lg">Bienvenue sur mon Blog - Le Début d’une Nouvelle Aventure</h4>
+        <p class="text-weight-light text-body1 q-mb-xl">Salut à tous et bienvenue sur mon blog ! Je m’appelle Thibault Guilhem, et je suis un développeur web autodidacte passionné par les technologies modernes du web. Ce blog est l’aboutissement de plusieurs années de travail acharné et de passion pour le développement web.</p>
+        <h5 class="text-weight-bold q-mb-lg">Pourquoi ce blog ?</h5>
+        <p class="text-weight-light text-body1 q-mb-xl">L’idée de créer ce blog m’est venue après avoir passé des heures à lire et à apprendre des blogs de développeurs, à regarder des tutoriels et à expérimenter avec divers projets. J’ai réalisé que partager mes connaissances, mes découvertes et mes expériences pourrait non seulement aider d’autres développeurs en herbe, mais aussi me permettre de continuer à apprendre et à grandir dans ce domaine.</p>
+        <h5 class="text-weight-bold q-mb-lg">Les Sujets Abordés</h5>
+        <h6 class="q-mb-md">Développement Web</h6>
+        <p class="text-weight-light text-body1 q-mb-xl">Vous trouverez ici des articles détaillés sur le développement web, couvrant des technologies comme Next.js, React, Node.js, TypeScript, Tailwind CSS, et MongoDB. Que vous soyez débutant ou développeur expérimenté, j’espère que vous trouverez des informations utiles et inspirantes.</p>
+        <h6 class="q-mb-md">Projets Personnels</h6>
+        <p class="text-weight-light text-body1 q-mb-xl">Je partagerai également des mises à jour régulières sur mes projets personnels, notamment Task Manager. Vous pourrez suivre l’évolution de ce projet, découvrir les défis que je rencontre et les solutions que je mets en place. J’entrerai dans les détails techniques pour vous montrer comment j’utilise ces technologies pour créer des applications performantes et sécurisées.</p>
+        <h6 class="q-mb-md">Astuces et Bonnes Pratiques</h6>
+        <p class="text-weight-light text-body1 q-mb-xl">En plus des projets et des tutoriels, je partagerai des astuces et des bonnes pratiques que j’ai découvertes au fil de mes expériences. Que ce soit des conseils pour optimiser votre code, améliorer la sécurité de vos applications ou simplement des raccourcis pour être plus efficace, il y aura toujours quelque chose de nouveau à apprendre.</p>
+        <h6 class="q-mb-md">Intelligence Artificielle et Outils Modernes</h6>
+        <p class="text-weight-light text-body1 q-mb-xl">Étant un grand amateur des avancées technologiques, j’écrirai également sur des sujets comme l’intelligence artificielle et des outils modernes tels que ChatGPT et Copilot. Ces outils m’ont aidé à améliorer ma productivité et à explorer de nouvelles possibilités dans le développement web.</p>
+        <h6 class="q-mb-md">Cinéma et Musique</h6>
+        <p class="text-weight-light text-body1 q-mb-xl">Enfin, parce qu’un développeur a aussi besoin de se détendre, je partagerai mes coups de cœur cinéma et musique. C’est toujours intéressant de découvrir de nouvelles perspectives et de s’inspirer de différents domaines artistiques.</p>
+        <h5 class="text-weight-bold q-mb-lg">Mon Premier Grand Projet : Task Manager</h5>
+        <p class="text-weight-light text-body1 q-mb-lg">Je suis particulièrement fier de mon projet <span class="text-weight-medium">Task Manager</span>, une application de gestion de tâches conçue pour être performante et sécurisée. Voici quelques-unes des fonctionnalités clés que vous pouvez attendre :</p>
         <ul>
           <li>Gestion des tâches : Créez, modifiez et supprimez des tâches facilement.</li>
           <li>Workspaces : Travaillez en équipe en créant des espaces de travail dédiés.</li>
           <li>Sécurité : Utilisation de pratiques de sécurité modernes pour protéger les données des utilisateurs.</li>
         </ul>
-        <p>Je documenterai tout le processus de développement de Task Manager sur ce blog, de la conception initiale aux défis techniques rencontrés, en passant par les succès obtenus.</p>
+        <p class="text-weight-light text-body1 q-mb-xl">Je documenterai tout le processus de développement de Task Manager sur ce blog, de la conception initiale aux défis techniques rencontrés, en passant par les succès obtenus.</p>
         <h3>Conclusion</h3>
-        <p>Merci d’avoir pris le temps de lire cet article d’introduction. J’espère que vous trouverez ce blog utile et inspirant. N’hésitez pas à me contacter si vous avez des questions, des suggestions ou si vous souhaitez collaborer sur un projet.</p>
-        <p>Restez à l’écoute pour les prochains articles et n’oubliez pas de vous abonner pour ne rien manquer !</p>
-        <p>À bientôt !</p>
+        <p class="text-weight-light text-body1 q-mb-xl">Merci d’avoir pris le temps de lire cet article d’introduction. J’espère que vous trouverez ce blog utile et inspirant. N’hésitez pas à me contacter si vous avez des questions, des suggestions ou si vous souhaitez collaborer sur un projet.</p>
+        <p class="text-weight-light text-body1 q-mb-xl">Restez à l’écoute pour les prochains articles et n’oubliez pas de vous abonner pour ne rien manquer !</p>
+        <p class="text-weight-light text-body1 q-mb-xl">À bientôt !</p>
       `,
   },
   {
@@ -217,31 +217,6 @@ function getTextColorClass(lightClass) {
 </script>
 
 <style scoped>
-.author-img {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-}
-
-.author-img-large {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-}
-
-.article-content ul {
-  list-style-type: disc;
-  margin-left: 20px;
-}
-
-.article-content li {
-  margin-bottom: 10px;
-}
-
-.author-bio {
-  text-align: center;
-}
-
 a {
   text-decoration: none;
 }
