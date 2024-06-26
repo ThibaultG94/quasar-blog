@@ -78,17 +78,9 @@
             <span class="text-subtitle1">Retour au blog</span>
           </q-btn>
         </div>
-        <div class="article-content q-mb-lg">
+        <div class="q-mb-lg">
           <div v-html="article.content"></div>
         </div>
-      </div>
-      <div class="author-bio q-mt-lg">
-        <img
-          src="/path/to/author.jpg"
-          alt="Thibault Guilhem"
-          class="author-img-large"
-        />
-        <div class="text-body1 text-weight-bold q-mt-md">Thibault Guilhem</div>
       </div>
     </div>
     <div v-else>
@@ -133,16 +125,16 @@ const articles = ref([
         <p class="text-weight-light text-body1 q-mb-xl">Enfin, parce qu’un développeur a aussi besoin de se détendre, je partagerai mes coups de cœur cinéma et musique. C’est toujours intéressant de découvrir de nouvelles perspectives et de s’inspirer de différents domaines artistiques.</p>
         <h5 class="text-weight-bold q-mb-lg">Mon Premier Grand Projet : Task Manager</h5>
         <p class="text-weight-light text-body1 q-mb-lg">Je suis particulièrement fier de mon projet <span class="text-weight-medium">Task Manager</span>, une application de gestion de tâches conçue pour être performante et sécurisée. Voici quelques-unes des fonctionnalités clés que vous pouvez attendre :</p>
-        <ul>
-          <li>Gestion des tâches : Créez, modifiez et supprimez des tâches facilement.</li>
-          <li>Workspaces : Travaillez en équipe en créant des espaces de travail dédiés.</li>
-          <li>Sécurité : Utilisation de pratiques de sécurité modernes pour protéger les données des utilisateurs.</li>
+        <ul class="text-grey-5 text-body1">
+          <li><span class="text-dark text-weight-light"><span class="text-weight-bold">Gestion des tâches</span> : Créez, modifiez et supprimez des tâches facilement.</span></li>
+          <li><span class="text-dark text-weight-light"><span class="text-weight-bold">Workspaces</span> : Travaillez en équipe en créant des espaces de travail dédiés.</span></li>
+          <li><span class="text-dark text-weight-light"><span class="text-weight-bold">Sécurité</span> : Utilisation de pratiques de sécurité modernes pour protéger les données des utilisateurs.</span></li>
         </ul>
-        <p class="text-weight-light text-body1 q-mb-xl">Je documenterai tout le processus de développement de Task Manager sur ce blog, de la conception initiale aux défis techniques rencontrés, en passant par les succès obtenus.</p>
-        <h3>Conclusion</h3>
-        <p class="text-weight-light text-body1 q-mb-xl">Merci d’avoir pris le temps de lire cet article d’introduction. J’espère que vous trouverez ce blog utile et inspirant. N’hésitez pas à me contacter si vous avez des questions, des suggestions ou si vous souhaitez collaborer sur un projet.</p>
-        <p class="text-weight-light text-body1 q-mb-xl">Restez à l’écoute pour les prochains articles et n’oubliez pas de vous abonner pour ne rien manquer !</p>
-        <p class="text-weight-light text-body1 q-mb-xl">À bientôt !</p>
+        <p class="text-weight-light text-body1 q-mb-xl">Je documenterai tout le processus de développement de <span class="text-weight-medium">Task Manager</span> sur ce blog, de la conception initiale aux défis techniques rencontrés, en passant par les succès obtenus.</p>
+        <h5 class="text-weight-bold q-mb-lg">Conclusion</h5>
+        <p class="text-weight-light text-body1 q-mb-md">Merci d’avoir pris le temps de lire cet article d’introduction. J’espère que vous trouverez ce blog utile et inspirant. N’hésitez pas à me contacter si vous avez des questions, des suggestions ou si vous souhaitez collaborer sur un projet.</p>
+        <p class="text-weight-light text-body1 q-mb-md">Restez à l’écoute pour les prochains articles et n’oubliez pas de vous abonner pour ne rien manquer !</p>
+        <p class="text-weight-light text-body1">À bientôt !</p>
       `,
   },
   {
