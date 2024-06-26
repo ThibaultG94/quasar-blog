@@ -40,7 +40,7 @@
             class="text-size-subtitle1 text-weight-medium"
             :class="getTextColorClass('text-dark')"
           />
-          <q-btn
+          <!-- <q-btn
             flat
             round
             icon="search"
@@ -48,7 +48,7 @@
             no-caps
             class="text-size-subtitle1"
             :class="getTextColorClass('text-dark')"
-          />
+          /> -->
           <q-btn
             flat
             round

@@ -14,6 +14,11 @@ const routes = [
         props: (route) => ({ darkMode: route.query.darkMode === "true" }),
       },
       {
+        path: "blog/:articleSlug",
+        component: () => import("pages/ArticlePage.vue"),
+        props: true,
+      },
+      {
         path: "projects",
         component: () => import("pages/ProjectsPage.vue"),
         props: (route) => ({ darkMode: route.query.darkMode === "true" }),

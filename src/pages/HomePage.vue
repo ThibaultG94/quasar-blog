@@ -42,6 +42,7 @@
           </p>
           <q-btn
             flat
+            :to="`/blog/${news.slug}`"
             label="En savoir plus"
             class="text-accent text-subtitle1 q-px-none text-weight-bold"
             no-caps
@@ -81,6 +82,7 @@ const newsItems = [
     tags: ["INTRODUCTION", "WEB-DEVELOPMENT", "PORTFOLIO"],
     description:
       "Dans cet article, je vous présente mon parcours, mes compétences, et les projets sur lesquels je travaille, notamment mon application 'Task Manager'.",
+    slug: "bienvenue-sur-mon-blog",
   },
   {
     date: "5 août 2023",
@@ -88,6 +90,7 @@ const newsItems = [
     tags: ["NEXT-JS", "TAILWIND", "GUIDE", "FEATURE"],
     description:
       "Sortie du template Tailwind Nextjs Starter Blog v2.0, refactorisé avec le répertoire Nextjs App et l'installation des composants React Server. Découvrez les nouvelles fonctionnalités et comment migrer depuis la V1.",
+    slug: "lancement-tailwind-nextjs-v2",
   },
   {
     date: "7 août 2021",
@@ -95,6 +98,7 @@ const newsItems = [
     tags: ["NEXT-JS", "TAILWIND", "GUIDE"],
     description:
       "Un aperçu des nouvelles fonctionnalités de la v1 - copie de blocs de code, auteurs multiples, mise en page du frontmatter, etc.",
+    slug: "nouvelles-fonctionnalites-v1",
   },
 ];
 
