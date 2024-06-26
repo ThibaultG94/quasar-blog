@@ -20,7 +20,7 @@
             to="/blog"
             no-caps
             class="text-size-subtitle1 text-weight-medium"
-            :class="getTextColorClass('text-grey-7')"
+            :class="getTextColorClass('text-dark')"
           />
           <q-btn
             v-if="!isMobile"
@@ -29,7 +29,7 @@
             to="/projects"
             no-caps
             class="text-size-subtitle1 text-weight-medium"
-            :class="getTextColorClass('text-grey-7')"
+            :class="getTextColorClass('text-dark')"
           />
           <q-btn
             v-if="!isMobile"
@@ -38,7 +38,7 @@
             to="/about"
             no-caps
             class="text-size-subtitle1 text-weight-medium"
-            :class="getTextColorClass('text-grey-7')"
+            :class="getTextColorClass('text-dark')"
           />
           <q-btn
             flat
@@ -47,7 +47,7 @@
             aria-label="Search"
             no-caps
             class="text-size-subtitle1"
-            :class="getTextColorClass('text-grey-7')"
+            :class="getTextColorClass('text-dark')"
           />
           <q-btn
             flat
@@ -56,7 +56,7 @@
             @click="toggleDarkMode"
             aria-label="Dark Mode"
             class="text-size-subtitle1"
-            :class="getTextColorClass('text-grey-7')"
+            :class="getTextColorClass('text-dark')"
           />
           <q-btn
             flat
@@ -181,6 +181,7 @@ function getTextColorClass(lightClass) {
     "text-grey-7": "text-grey-6",
     "text-grey-8": "text-grey-5",
     "text-grey-9": "text-grey-4",
+    "text-dark": "text-light",
   };
   return darkMode.value ? darkModeMapping[lightClass] : lightClass;
 }
