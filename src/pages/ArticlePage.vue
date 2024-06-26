@@ -73,14 +73,10 @@
               </div>
             </div>
           </div>
-          <q-btn
-            flat
-            to="/blog"
-            label="Retour au blog"
-            class="text-accent q-px-none q-mb-md"
-            no-caps
-            icon-left="arrow_back"
-          />
+          <q-btn flat to="/blog" class="text-accent q-px-none q-mb-md" no-caps>
+            <q-icon name="arrow_back" class="q-mr-sm" />
+            <span class="text-subtitle1">Retour au blog</span>
+          </q-btn>
         </div>
         <div class="article-content q-mb-lg">
           <div v-html="article.content"></div>
