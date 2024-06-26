@@ -146,15 +146,15 @@ const articles = ref([
       "Sortie du template Tailwind Nextjs Starter Blog v2.0, refactorisé avec le répertoire Nextjs App et l'installation des composants React Server. Découvrez les nouvelles fonctionnalités et comment migrer depuis la V1.",
     slug: "lancement-tailwind-nextjs-v2",
     content: `
-        <h2>Introduction à Tailwind Nextjs Starter Blog v2.0</h2>
-        <p>La nouvelle version de Tailwind Nextjs Starter Blog est enfin là ! Dans cet article, je vais vous présenter les nouveautés et les améliorations de cette version.</p>
-        <h3>Nouvelles Fonctionnalités</h3>
-        <ul>
-          <li>Migration vers le répertoire Nextjs App.</li>
-          <li>Installation des composants React Server.</li>
-          <li>Refactorisation complète du code pour une meilleure performance.</li>
+        <h4 class="text-weight-bold q-mb-lg">Introduction à Tailwind Nextjs Starter Blog v2.0</h4>
+        <p class="text-weight-light text-body1 q-mb-xl">La nouvelle version de Tailwind Nextjs Starter Blog est enfin là ! Dans cet article, je vais vous présenter les nouveautés et les améliorations de cette version.</p>
+        <h5 class="text-weight-bold q-mb-lg">Nouvelles Fonctionnalités</h5>
+        <ul class="text-grey-5 text-body1 q-mb-xl">
+          <li><span class="text-dark text-weight-light"><span class="text-weight-bold">Migration vers le répertoire Nextjs App.</span></span></li>
+          <li><span class="text-dark text-weight-light"><span class="text-weight-bold">Installation des composants React Server.</span></span></li>
+          <li><span class="text-dark text-weight-light"><span class="text-weight-bold">Refactorisation complète du code pour une meilleure performance.</span></span></li>
         </ul>
-        <p>Ces améliorations vous permettront de créer des blogs plus rapidement et plus efficacement. Suivez le guide pour migrer depuis la version précédente.</p>
+        <p class="text-weight-light text-body1 q-mb-xl">Ces améliorations vous permettront de créer des blogs plus rapidement et plus efficacement. Suivez le guide pour migrer depuis la version précédente.</p>
       `,
   },
   {
@@ -166,14 +166,14 @@ const articles = ref([
       "Un aperçu des nouvelles fonctionnalités de la v1 - copie de blocs de code, auteurs multiples, mise en page du frontmatter, etc.",
     slug: "nouvelles-fonctionnalites-v1",
     content: `
-        <h2>Fonctionnalités de la v1</h2>
-        <p>La première version de notre projet apporte plusieurs fonctionnalités intéressantes :</p>
-        <ul>
-          <li>Copie de blocs de code.</li>
-          <li>Auteurs multiples.</li>
-          <li>Mise en page du frontmatter.</li>
+        <h4 class="text-weight-bold q-mb-lg">Fonctionnalités de la v1</h4>
+        <p class="text-weight-light text-body1 q-mb-xl">La première version de notre projet apporte plusieurs fonctionnalités intéressantes :</p>
+        <ul class="text-grey-5 text-body1 q-mb-xl">
+          <li><span class="text-dark text-weight-light"><span class="text-weight-bold">Copie de blocs de code.</span></span></li>
+          <li><span class="text-dark text-weight-light"><span class="text-weight-bold">Auteurs multiples.</span></span></li>
+          <li><span class="text-dark text-weight-light"><span class="text-weight-bold">Mise en page du frontmatter.</span></span></li>
         </ul>
-        <p>Ces fonctionnalités ont été conçues pour améliorer votre expérience de développement et rendre votre workflow plus efficace.</p>
+        <p class="text-weight-light text-body1 q-mb-xl">Ces fonctionnalités ont été conçues pour améliorer votre expérience de développement et rendre votre workflow plus efficace.</p>
       `,
   },
 ]);
