@@ -50,18 +50,28 @@
               {{ news.date }}
             </div>
             <div>
-              <h2 class="text-h5 text-weight-bold q-mb-xs q-mt-none">
-                {{ news.title }}
-              </h2>
-              <div class="row items-start q-gutter-xs q-mb-md">
-                <span
-                  class="text-body2 text-accent text-weight-bold text-uppercase"
-                  v-for="tag in news.tags"
-                  :key="tag"
-                >
-                  {{ tag }}
-                </span>
-              </div>
+              <router-link
+                style="text-decoration: none; color: inherit"
+                :to="`/blog/${news.slug}`"
+                v-slot="{ navigate }"
+              >
+                <div @click="navigate">
+                  <h2
+                    class="text-h5 text-dark text-weight-bold q-mb-xs q-mt-none"
+                  >
+                    {{ news.title }}
+                  </h2>
+                  <div class="row items-start q-gutter-xs q-mb-md">
+                    <span
+                      class="text-body2 text-accent text-weight-bold text-uppercase"
+                      v-for="tag in news.tags"
+                      :key="tag"
+                    >
+                      {{ tag }}
+                    </span>
+                  </div>
+                </div>
+              </router-link>
               <p
                 :class="getTextColorClass('text-grey-7')"
                 class="q-mb-sm text-subtitle1 darky"
@@ -135,6 +145,7 @@ const newsItems = [
     tags: ["INTRODUCTION", "WEB-DEVELOPMENT", "PORTFOLIO"],
     description:
       "Dans cet article, je vous présente mon parcours, mes compétences, et les projets sur lesquels je travaille, notamment mon application 'Task Manager'.",
+    slug: "bienvenue-sur-mon-blog",
   },
   {
     date: "5 août 2023",
@@ -142,6 +153,7 @@ const newsItems = [
     tags: ["NEXT-JS", "TAILWIND", "GUIDE", "FEATURE"],
     description:
       "Sortie du template Tailwind Nextjs Starter Blog v2.0, refactorisé avec le répertoire Nextjs App et l'installation des composants React Server. Découvrez les nouvelles fonctionnalités et comment migrer depuis la V1.",
+    slug: "lancement-tailwind-nextjs-v2",
   },
   {
     date: "7 août 2021",
@@ -149,33 +161,7 @@ const newsItems = [
     tags: ["NEXT-JS", "TAILWIND", "GUIDE"],
     description:
       "Un aperçu des nouvelles fonctionnalités de la v1 - copie de blocs de code, auteurs multiples, mise en page du frontmatter, etc.",
-  },
-  {
-    date: "2 mai 2021",
-    title:
-      "Introduction de messages en plusieurs parties avec le routage imbriqué",
-    tags: ["MULTI-AUTHOR", "NEXT-JS", "FEATURE"],
-    description:
-      "Le modèle de blog prend en charge les articles dans des sous-dossiers imbriqués. Cela peut être utilisé pour regrouper les articles au contenu similaire, par exemple un cours en plusieurs parties. Cet article est lui-même un exemple de parcours imbriqué !",
-  },
-  {
-    date: "31 janvier 2021",
-    title: "Mon titre fantaisiste",
-    tags: ["HELLO"],
-    description: "projet de poste",
-  },
-  // Ajoute plus d'articles ici pour tester la pagination
-  {
-    date: "15 janvier 2021",
-    title: "Un autre titre",
-    tags: ["WEB-DEVELOPMENT"],
-    description: "Description d'un autre article.",
-  },
-  {
-    date: "10 janvier 2021",
-    title: "Encore un titre",
-    tags: ["NEXT-JS", "GUIDE"],
-    description: "Description d'un autre article encore.",
+    slug: "nouvelles-fonctionnalites-v1",
   },
 ];
 
