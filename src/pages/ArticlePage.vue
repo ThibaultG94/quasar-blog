@@ -1,39 +1,90 @@
 <template>
   <div class="q-px-xs-md q-px-sm-lg q-pt-xl">
-    <q-btn
-      flat
-      to="/blog"
-      label="Retour au blog"
-      class="text-accent q-mb-md"
-      no-caps
-      icon-left="arrow_back"
-    />
     <div v-if="article">
-      <div class="article-header q-mb-lg">
-        <h1 class="text-h2 text-weight-bold">{{ article.title }}</h1>
-        <p class="text-subtitle2 q-mt-none">{{ article.date }}</p>
+      <div class="text-center q-pt-md q-mb-lg">
+        <p
+          class="text-subtitle1 q-mt-none text-weight-medium"
+          :class="getTextColorClass('text-grey-8')"
+        >
+          {{ article.day }} {{ article.date }}
+        </p>
+        <h1 class="text-size-h3 text-weight-bold q-pb-md border-line">
+          {{ article.title }}
+        </h1>
       </div>
-      <div class="article-meta row q-gutter-md q-mb-md">
-        <div class="author-info col-auto">
-          <img
-            src="/path/to/author.jpg"
-            alt="Thibault Guilhem"
-            class="author-img"
+      <div class="col-to-row">
+        <div class="q-mr-xl">
+          <div class="row items-center q-pt-lg q-pb-xl border-line">
+            <img
+              src="/public/img/avatar.png"
+              alt="Profile Picture"
+              class="w-40 h-40 rounded q-mr-sm"
+            />
+            <div class="text-body2 text-weight-medium">Thibault Guilhem</div>
+          </div>
+          <div class="q-py-xl border-line">
+            <p
+              class="text-uppercase text-caption text-weight-medium"
+              :class="getTextColorClass('text-grey-7')"
+            >
+              Tags
+            </p>
+            <div class="row w-250">
+              <span
+                class="q-pr-md text-body2 text-accent text-weight-medium"
+                v-for="tag in article.tags"
+                :key="tag"
+              >
+                {{ tag }}
+              </span>
+            </div>
+          </div>
+          <div class="q-py-xl">
+            <div v-if="previousArticle">
+              <p
+                class="text-uppercase text-caption text-weight-medium"
+                :class="getTextColorClass('text-grey-7')"
+              >
+                Article précédent
+              </p>
+              <div class="row w-250">
+                <router-link
+                  :to="`/blog/${previousArticle.slug}`"
+                  class="text-body2 text-accent text-weight-medium"
+                >
+                  {{ previousArticle.title }}
+                </router-link>
+              </div>
+            </div>
+            <div v-if="nextArticle" class="q-py-lg">
+              <p
+                class="text-uppercase text-caption text-weight-medium"
+                :class="getTextColorClass('text-grey-7')"
+              >
+                Article suivant
+              </p>
+              <div class="row w-250">
+                <router-link
+                  :to="`/blog/${nextArticle.slug}`"
+                  class="text-body2 text-accent text-weight-medium"
+                >
+                  {{ nextArticle.title }}
+                </router-link>
+              </div>
+            </div>
+          </div>
+          <q-btn
+            flat
+            to="/blog"
+            label="Retour au blog"
+            class="text-accent q-px-none q-mb-md"
+            no-caps
+            icon-left="arrow_back"
           />
-          <div class="text-body2 text-weight-bold">Thibault Guilhem</div>
         </div>
-        <div class="tags col">
-          <span
-            class="text-body2 text-accent text-weight-bold"
-            v-for="tag in article.tags"
-            :key="tag"
-          >
-            {{ tag }}
-          </span>
+        <div class="article-content q-mb-lg">
+          <div v-html="article.content"></div>
         </div>
-      </div>
-      <div class="article-content q-mb-lg">
-        <div v-html="article.content"></div>
       </div>
       <div class="author-bio q-mt-lg">
         <img
@@ -62,6 +113,7 @@ const props = defineProps({
 const articles = ref([
   {
     date: "15 mai 2024",
+    day: "mercredi",
     title: "Bienvenue sur mon Blog - Découvrez mon Parcours et mes Projets",
     tags: ["INTRODUCTION", "WEB-DEVELOPMENT", "PORTFOLIO"],
     description:
@@ -99,6 +151,7 @@ const articles = ref([
   },
   {
     date: "5 août 2023",
+    day: "samedi",
     title: "Lancement de Tailwind Nextjs Starter Blog v2.0",
     tags: ["NEXT-JS", "TAILWIND", "GUIDE", "FEATURE"],
     description:
@@ -118,6 +171,7 @@ const articles = ref([
   },
   {
     date: "7 août 2021",
+    day: "samedi",
     title: "Nouvelles fonctionnalités dans la v1",
     tags: ["NEXT-JS", "TAILWIND", "GUIDE"],
     description:
@@ -140,6 +194,22 @@ const article = computed(() => {
   return articles.value.find((a) => a.slug === route.params.articleSlug);
 });
 
+const previousArticle = computed(() => {
+  const currentIndex = articles.value.findIndex(
+    (a) => a.slug === route.params.articleSlug
+  );
+  return currentIndex < articles.value.length - 1
+    ? articles.value[currentIndex + 1]
+    : null;
+});
+
+const nextArticle = computed(() => {
+  const currentIndex = articles.value.findIndex(
+    (a) => a.slug === route.params.articleSlug
+  );
+  return currentIndex > 0 ? articles.value[currentIndex - 1] : null;
+});
+
 function getTextColorClass(lightClass) {
   const darkModeMapping = {
     "text-grey-7": "text-grey-6",
@@ -151,18 +221,6 @@ function getTextColorClass(lightClass) {
 </script>
 
 <style scoped>
-.article-header {
-  text-align: center;
-}
-
-.article-meta {
-  align-items: center;
-}
-
-.author-info {
-  text-align: center;
-}
-
 .author-img {
   border-radius: 50%;
   width: 50px;
@@ -173,10 +231,6 @@ function getTextColorClass(lightClass) {
   border-radius: 50%;
   width: 100px;
   height: 100px;
-}
-
-.tags span {
-  margin-right: 10px;
 }
 
 .article-content ul {
@@ -190,5 +244,9 @@ function getTextColorClass(lightClass) {
 
 .author-bio {
   text-align: center;
+}
+
+a {
+  text-decoration: none;
 }
 </style>
