@@ -10,17 +10,31 @@
           v-for="project in projects"
           :key="project.title"
         >
-          <div class="q-mb-md">
+          <a
+            :href="project.link"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="text-decoration: none; color: inherit"
+          >
             <q-img
               position="center"
               :src="project.image"
               :alt="project.title"
             />
-          </div>
+          </a>
           <q-card-section class="q-px-lg q-pt-xs q-pb-xl">
-            <h2 class="text-h5 text-weight-bold q-mb-md">
-              {{ project.title }}
-            </h2>
+            <a
+              :href="project.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="q-mb-md">
+                <h2 class="text-h5 text-weight-bold q-mb-md">
+                  {{ project.title }}
+                </h2>
+              </div>
+            </a>
             <p :class="getTextColorClass('text-grey-7')" class="text-subtitle1">
               {{ project.description }}
             </p>
@@ -56,14 +70,14 @@ const projects = [
     description:
       "Bienvenue sur mon site portfolio ! Ici, vous pouvez découvrir mes projets, consulter mon CV, et entrer en contact avec moi. Explorez les technologies que j'utilise, les applications que j'ai développées, et apprenez-en plus sur mon parcours professionnel et mes compétences en développement web.",
     image: "../../public/img/projet-portfolio.jpg",
-    link: "#",
+    link: "https://portfolio-thibaultg94.vercel.app/",
   },
   {
     title: "Vitrine Helium",
     description:
       "Bienvenue sur le site vitrine Helium, un exemple élégant et moderne de mes compétences en développement web. Ce projet met en avant un design épuré et responsive, ainsi qu'une présentation visuelle soignée pour offrir une expérience utilisateur agréable.",
     image: "../../public/img/helium.jpg",
-    link: "#",
+    link: "https://thibaultg94.github.io/Projet_3/",
   },
 ];
 
