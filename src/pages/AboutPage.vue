@@ -1,8 +1,8 @@
 <template>
   <div class="q-px-xs-md q-px-sm-lg q-pt-xl q-pb-lg">
     <q-page>
-      <h1 class="text-size-h2 text-weight-bold q-pb-xl border-line">About</h1>
-      <div class="row no-wrap q-gutter-lg q-mt-sm">
+      <h1 class="text-size-h2 text-weight-bold q-pb-lg border-line">About</h1>
+      <div class="col-to-row no-wrap q-gutter-lg q-mt-sm">
         <div class="text-center col-3">
           <div class="w-200 h-200 q-mx-auto q-mb-sm">
             <img
@@ -107,4 +107,8 @@ function getTextColorClass(lightClass) {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+p {
+  line-height: 1.7rem;
+}
+</style>
