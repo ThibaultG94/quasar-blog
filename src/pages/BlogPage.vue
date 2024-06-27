@@ -118,28 +118,8 @@ const props = defineProps({
   darkMode: Boolean,
 });
 
-const categories = [
-  { name: "NEXT-JS", count: 6 },
-  { name: "GUIDE", count: 5 },
-  { name: "TAILWIND", count: 3 },
-  { name: "FEATURE", count: 2 },
-  { name: "MATH", count: 1 },
-  { name: "OLS", count: 1 },
-  { name: "GITHUB", count: 1 },
-  { name: "HELLO", count: 1 },
-  { name: "INTRODUCTION", count: 1 },
-  { name: "WEB-DEVELOPMENT", count: 1 },
-  { name: "PORTFOLIO", count: 1 },
-  { name: "HOLIDAY", count: 1 },
-  { name: "CANADA", count: 1 },
-  { name: "IMAGES", count: 1 },
-  { name: "WRITINGS", count: 1 },
-  { name: "BOOK", count: 1 },
-  { name: "REFLECTION", count: 1 },
-  { name: "MULTI-AUTHOR", count: 1 },
-];
-
 const newsItems = ref([]);
+const categories = ref([]);
 const currentPage = ref(1);
 const itemsPerPage = 5;
 
@@ -157,10 +137,29 @@ onMounted(async () => {
   try {
     const response = await fetch("/src/data/articles.json");
     newsItems.value = await response.json();
+    updateCategories();
   } catch (error) {
     console.error("Error loading articles:", error);
   }
 });
+
+function updateCategories() {
+  const tagCounts = newsItems.value.reduce((acc, article) => {
+    article.tags.forEach((tag) => {
+      if (acc[tag]) {
+        acc[tag]++;
+      } else {
+        acc[tag] = 1;
+      }
+    });
+    return acc;
+  }, {});
+
+  categories.value = Object.keys(tagCounts).map((tag) => ({
+    name: tag,
+    count: tagCounts[tag],
+  }));
+}
 
 function nextPage() {
   if (currentPage.value < totalPages.value) {
