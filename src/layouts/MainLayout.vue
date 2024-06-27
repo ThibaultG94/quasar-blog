@@ -118,9 +118,9 @@
           flat
           round
           icon="fa fa-envelope"
-          href="https://twitter.com/ThibaultG94"
+          href="mailto:thibault.guilhem@gmail.com"
           target="_blank"
-          aria-label="Twitter"
+          aria-label="Email"
           :class="getTextColorClass('text-grey-9')"
         />
         <q-btn

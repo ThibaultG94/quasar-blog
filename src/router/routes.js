@@ -29,8 +29,8 @@ const routes = [
         props: (route) => ({ darkMode: route.query.darkMode === "true" }),
       },
       {
-        path: "cg",
-        component: () => import("pages/CGPage.vue"),
+        path: "cgu",
+        component: () => import("pages/CguPage.vue"),
         props: (route) => ({ darkMode: route.query.darkMode === "true" }),
       },
     ],
