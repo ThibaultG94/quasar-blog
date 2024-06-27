@@ -212,6 +212,21 @@
             modifications, les utilisateurs acceptent les CGU révisées.
           </p>
         </q-card-section>
+        <q-card-section class="q-mb-xs">
+          <h3 class="text-h5 q-mb-sm">
+            Droit applicable et juridiction compétente
+          </h3>
+          <p class="q-pb-md">
+            Les présentes Conditions Générales d'Utilisation sont régies par le
+            droit français. En cas de litige relatif à l'interprétation ou à
+            l'exécution des CGU, les tribunaux français seront seuls compétents.
+          </p>
+          <h4 class="text-h6 q-mb-sm">Date de la dernière modification</h4>
+          <p class="q-mb-xl">
+            Ces Conditions Générales d'Utilisation ont été mises à jour pour la
+            dernière fois le Jeudi 27 Juin 2024 à 11h38.
+          </p>
+        </q-card-section>
       </q-page-padding>
     </q-page-container>
   </q-page>
