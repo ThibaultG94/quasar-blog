@@ -43,7 +43,7 @@
               round
               icon="fab fa-linkedin"
               aria-label="LinkedIn"
-              href="https://linkedin.com/in/thibaultG94"
+              href="https://www.linkedin.com/in/thibault-g-10b37a271/"
               target="_blank"
               class="text-body1"
             />

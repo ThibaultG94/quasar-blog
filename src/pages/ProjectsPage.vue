@@ -41,6 +41,7 @@
             <q-btn
               flat
               label="En savoir plus"
+              target="_blank"
               :href="project.link"
               class="text-body1 text-accent text-weight-medium q-pl-none q-pt-md"
               no-caps

@@ -55,9 +55,10 @@
                 :to="`/blog/${news.slug}`"
                 v-slot="{ navigate }"
               >
-                <div @click="navigate">
+                <div @click="navigate" :class="getTextColorClass('text-dark')">
                   <h2
-                    class="text-h5 text-dark text-weight-bold q-mb-xs q-mt-none"
+                    :class="getTextColorClass('text-dark')"
+                    class="text-h5 text-weight-bold q-mb-xs q-mt-none"
                   >
                     {{ news.title }}
                   </h2>
@@ -195,6 +196,7 @@ function getTextColorClass(lightClass) {
     "text-grey-7": "text-grey-6",
     "text-grey-8": "text-grey-5",
     "text-grey-9": "text-grey-4",
+    "text-dark": "text-light",
   };
   return props.darkMode ? darkModeMapping[lightClass] : lightClass;
 }

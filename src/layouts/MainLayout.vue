@@ -136,7 +136,7 @@
           flat
           round
           icon="fab fa-linkedin"
-          href="https://linkedin.com/in/thibaultG94"
+          href="https://www.linkedin.com/in/thibault-g-10b37a271/"
           target="_blank"
           aria-label="LinkedIn"
           :class="getTextColorClass('text-grey-9')"
