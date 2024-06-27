@@ -108,7 +108,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 
 defineOptions({
   name: "BlogPage",
@@ -139,44 +139,27 @@ const categories = [
   { name: "MULTI-AUTHOR", count: 1 },
 ];
 
-const newsItems = [
-  {
-    date: "15 mai 2024",
-    title: "Bienvenue sur mon Blog - Découvrez mon Parcours et mes Projets",
-    tags: ["INTRODUCTION", "WEB-DEVELOPMENT", "PORTFOLIO"],
-    description:
-      "Dans cet article, je vous présente mon parcours, mes compétences, et les projets sur lesquels je travaille, notamment mon application 'Task Manager'.",
-    slug: "bienvenue-sur-mon-blog",
-  },
-  {
-    date: "5 août 2023",
-    title: "Lancement de Tailwind Nextjs Starter Blog v2.0",
-    tags: ["NEXT-JS", "TAILWIND", "GUIDE", "FEATURE"],
-    description:
-      "Sortie du template Tailwind Nextjs Starter Blog v2.0, refactorisé avec le répertoire Nextjs App et l'installation des composants React Server. Découvrez les nouvelles fonctionnalités et comment migrer depuis la V1.",
-    slug: "lancement-tailwind-nextjs-v2",
-  },
-  {
-    date: "7 août 2021",
-    title: "Nouvelles fonctionnalités dans la v1",
-    tags: ["NEXT-JS", "TAILWIND", "GUIDE"],
-    description:
-      "Un aperçu des nouvelles fonctionnalités de la v1 - copie de blocs de code, auteurs multiples, mise en page du frontmatter, etc.",
-    slug: "nouvelles-fonctionnalites-v1",
-  },
-];
-
+const newsItems = ref([]);
 const currentPage = ref(1);
 const itemsPerPage = 5;
 
 const totalPages = computed(() => {
-  return Math.ceil(newsItems.length / itemsPerPage);
+  return Math.ceil(newsItems.value.length / itemsPerPage);
 });
 
 const paginatedNews = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
   const end = start + itemsPerPage;
-  return newsItems.slice(start, end);
+  return newsItems.value.slice(start, end);
+});
+
+onMounted(async () => {
+  try {
+    const response = await fetch("/src/data/articles.json");
+    newsItems.value = await response.json();
+  } catch (error) {
+    console.error("Error loading articles:", error);
+  }
 });
 
 function nextPage() {
