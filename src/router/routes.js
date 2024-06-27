@@ -4,6 +4,10 @@ const routes = [
     component: () => import("layouts/MainLayout.vue"),
     children: [
       {
+        path: "",
+        redirect: "/home",
+      },
+      {
         path: "/home",
         component: () => import("pages/HomePage.vue"),
         props: (route) => ({ darkMode: route.query.darkMode === "true" }),
