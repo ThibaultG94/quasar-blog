@@ -3,7 +3,7 @@
     <q-page-container>
       <q-page-padding>
         <q-card-section>
-          <div class="text-h4">Conditions Générales d'Utilisation</div>
+          <div class="text-h4 q-mt-xl">Conditions Générales d'Utilisation</div>
         </q-card-section>
 
         <q-card-section class="q-mb-xs">
@@ -84,7 +84,10 @@
             modifier ou publier le contenu du Site sans l'autorisation préalable
             écrite de l'auteur. Pour obtenir une autorisation, les utilisateurs
             doivent contacter l'auteur via l'adresse email
-            <a class="text-weight-bold" href="mailto:thibault.guilhem@gmail.com"
+            <a
+              class="text-weight-bold"
+              :class="getTextColorClass('text-dark')"
+              href="mailto:thibault.guilhem@gmail.com"
               >thibault.guilhem@gmail.com</a
             >.
           </p>
@@ -232,16 +235,21 @@
   </q-page>
 </template>
 
-<script>
-export default {
+<script setup>
+defineOptions({
   name: "CguPage",
-  props: {
-    darkMode: {
-      type: Boolean,
-      default: false,
-    },
-  },
-};
+});
+
+const props = defineProps({
+  darkMode: Boolean,
+});
+
+function getTextColorClass(lightClass) {
+  const darkModeMapping = {
+    "text-dark": "text-light",
+  };
+  return props.darkMode ? darkModeMapping[lightClass] : lightClass;
+}
 </script>
 
 <style scoped>
@@ -251,5 +259,6 @@ p {
 }
 a {
   text-decoration: none;
+  color: var(--q-color-primary);
 }
 </style>
