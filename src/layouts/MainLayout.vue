@@ -159,7 +159,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useQuasar } from "quasar";
 
 defineOptions({
@@ -171,9 +171,18 @@ const darkMode = ref($q.dark.isActive);
 const leftDrawerOpen = ref(false);
 const isMobile = ref(window.innerWidth <= 600);
 
+onMounted(() => {
+  const storedDarkMode = localStorage.getItem("darkMode");
+  if (storedDarkMode !== null) {
+    $q.dark.set(storedDarkMode === "true");
+    darkMode.value = $q.dark.isActive;
+  }
+});
+
 function toggleDarkMode() {
   $q.dark.toggle();
   darkMode.value = $q.dark.isActive;
+  localStorage.setItem("darkMode", darkMode.value);
 }
 
 function getTextColorClass(lightClass) {
