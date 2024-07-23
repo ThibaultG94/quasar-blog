@@ -16,7 +16,7 @@
         <div class="q-mr-xl">
           <div class="row items-center q-pt-lg q-pb-xl border-line">
             <img
-              src="/public/img/avatar.png"
+              src="/img/avatar.png"
               alt="Profile Picture"
               class="w-40 h-40 rounded q-mr-sm"
             />
