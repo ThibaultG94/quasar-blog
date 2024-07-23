@@ -79,7 +79,7 @@ const newsItems = ref([]);
 
 onMounted(async () => {
   try {
-    const response = await fetch("/src/data/articles.json");
+    const response = await fetch("/data/articles.json");
     newsItems.value = await response.json();
   } catch (error) {
     console.error("Error loading articles:", error);

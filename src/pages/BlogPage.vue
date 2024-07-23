@@ -135,7 +135,7 @@ const paginatedNews = computed(() => {
 
 onMounted(async () => {
   try {
-    const response = await fetch("/src/data/articles.json");
+    const response = await fetch("/data/articles.json");
     newsItems.value = await response.json();
     updateCategories();
   } catch (error) {

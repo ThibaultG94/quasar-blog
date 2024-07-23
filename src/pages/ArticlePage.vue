@@ -103,7 +103,7 @@ const article = ref(null);
 
 onMounted(async () => {
   try {
-    const response = await fetch("/src/data/articles.json");
+    const response = await fetch("/data/articles.json");
     articles.value = await response.json();
     article.value = articles.value.find(
       (a) => a.slug === route.params.articleSlug
