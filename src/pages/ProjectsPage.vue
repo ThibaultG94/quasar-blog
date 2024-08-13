@@ -64,14 +64,14 @@ const projects = [
     title: "Task Manager",
     description:
       "Bienvenue sur l'application Task Manager, une application de gestion de tâches conçue pour être performante et sécurisée. Ce projet permet de s'organiser seul ou en équipe en créant des espaces de travail dédié. Avec un design épuré et responsive, ainsi qu'une présentation visuelle soignée pour offrir une expérience utilisateur agréable.",
-    image: "/img/task-manager.png",
+    image: "/img/task-manager.webp",
     link: "https://task-manager-front.admin.serv.ndplugins.com/",
   },
   {
     title: "Site Portfolio",
     description:
       "Bienvenue sur mon site portfolio ! Ici, vous pouvez découvrir mes projets, consulter mon CV, et entrer en contact avec moi. Explorez les technologies que j'utilise, les applications que j'ai développées, et apprenez-en plus sur mon parcours professionnel et mes compétences en développement web.",
-    image: "img/projet-portfolio.jpg",
+    image: "img/projet-portfolio.webp",
     link: "https://portfolio-thibaultg94.vercel.app/",
   },
 ];
