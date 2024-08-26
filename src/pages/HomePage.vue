@@ -10,6 +10,8 @@
       Découvrez toutes les actus web et tech, les dernières tendances, les
       astuces et les conseils pour les développeurs web et mobiles.
     </p>
+
+    <!-- Section des articles -->
     <div class="column q-gutter-lg q-pt-lg">
       <div
         class="col-to-row no-wrap q-gutter-sm q-pb-md border-line"
@@ -51,6 +53,7 @@
         </div>
       </div>
     </div>
+
     <div class="w-full text-right q-pt-sm">
       <q-btn
         flat
@@ -62,19 +65,64 @@
       />
     </div>
   </div>
+
+  <!-- Section des informations utilisateur -->
+  <div>
+    <div v-if="loading">Chargement...</div>
+    <div v-else-if="error">Erreur: {{ error.message }}</div>
+    <div v-else-if="user">
+      <h2 class="text-h5 text-weight-bold q-mb-xs">
+        Informations de l'utilisateur :
+      </h2>
+      <p class="text-body1 q-mt-lg q-mb-md">Nom : {{ user.name }}</p>
+      <p class="text-body1 q-mt-lg q-mb-md">Email : {{ user.email }}</p>
+    </div>
+    <div v-else>Aucune donnée utilisateur disponible.</div>
+  </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watchEffect } from "vue";
+import gql from "graphql-tag";
+import { useQuery } from "@vue/apollo-composable";
 
-defineOptions({
-  name: "HomePage",
-});
-
+// Déclaration des propriétés
 const props = defineProps({
   darkMode: Boolean,
 });
 
+// Configuration de la requête GraphQL pour récupérer les informations utilisateur
+const GET_USER = gql`
+  query GetUser($email: String!) {
+    user(where: { email: $email }) {
+      id
+      name
+      email
+    }
+  }
+`;
+
+// L'email à rechercher (fixé ici pour l'exemple)
+const userEmail = "thibault.guilhem@gmail.com";
+
+// Récupération des données utilisateur via Apollo
+const {
+  result: userData,
+  loading,
+  error,
+} = useQuery(GET_USER, { email: userEmail });
+
+// Variable réactive pour stocker l'utilisateur
+const user = ref(null);
+
+// Surveiller les changements dans userData et mettre à jour l'utilisateur
+watchEffect(() => {
+  if (userData.value && userData.value.user) {
+    user.value = userData.value.user;
+  }
+});
+
+// Chargement des articles (existant)
 const newsItems = ref([]);
 
 onMounted(async () => {
@@ -86,6 +134,7 @@ onMounted(async () => {
   }
 });
 
+// Fonction pour déterminer la classe CSS des couleurs de texte en fonction du mode sombre
 function getTextColorClass(lightClass) {
   const darkModeMapping = {
     "text-grey-7": "text-grey-6",
@@ -95,5 +144,3 @@ function getTextColorClass(lightClass) {
   return props.darkMode ? darkModeMapping[lightClass] : lightClass;
 }
 </script>
-
-<style scoped></style>
