@@ -5,6 +5,7 @@ const httpLink = new HttpLink({
   uri:
     process.env.VITE_KEYSTONE_API_URL ||
     "https://keystone-back.admin.serv.thiserv.com/api/graphql",
+  credentials: "include",
 });
 
 const cache = new InMemoryCache();
