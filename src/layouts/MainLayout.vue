@@ -6,7 +6,7 @@
           <q-toolbar-title>
             <q-btn
               flat
-              label="ThiBlog"
+              label="Chroniques d'un dev"
               icon="laptop"
               to="/home"
               class="text-size-h5 text-weight-bold"
@@ -143,7 +143,7 @@
         />
       </div>
       <p class="text-body2" :class="getTextColorClass('text-grey-8')">
-        Thiblog • © 2024 • Chroniques d'un dev
+        Thibault Guilhem • © 2024 • Chroniques d'un dev
       </p>
       <q-btn
         flat

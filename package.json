@@ -2,7 +2,7 @@
   "name": "npm",
   "version": "0.0.1",
   "description": "A portfolio / blog build with quasar",
-  "productName": "QuasarBlog",
+  "productName": "Thibault Guilhem - Chroniques d'un dev",
   "author": "Thibault Guilhem",
   "private": true,
   "scripts": {
