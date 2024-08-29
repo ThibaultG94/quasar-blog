@@ -6,7 +6,7 @@
           class="text-subtitle1 q-mt-none text-weight-medium"
           :class="getTextColorClass('text-grey-8')"
         >
-          {{ article.day }} {{ article.date }}
+          {{ formattedDate }}
         </p>
         <h1 class="text-size-h3 text-weight-bold q-pb-md border-line">
           {{ article.title }}
@@ -20,7 +20,9 @@
               alt="Profile Picture"
               class="w-40 h-40 rounded q-mr-sm"
             />
-            <div class="text-body2 text-weight-medium">Thibault Guilhem</div>
+            <div class="text-body2 text-weight-medium">
+              {{ article.author.name }}
+            </div>
           </div>
           <div class="q-py-xl border-line">
             <p
@@ -33,44 +35,10 @@
               <span
                 class="q-pr-md text-body2 text-accent text-weight-medium"
                 v-for="tag in article.tags"
-                :key="tag"
+                :key="tag.name"
               >
-                {{ tag }}
+                {{ tag.name }}
               </span>
-            </div>
-          </div>
-          <div class="q-py-xl">
-            <div v-if="previousArticle">
-              <p
-                class="text-uppercase text-caption text-weight-medium"
-                :class="getTextColorClass('text-grey-7')"
-              >
-                Article précédent
-              </p>
-              <div class="row w-250">
-                <router-link
-                  :to="`/blog/${previousArticle.slug}`"
-                  class="text-body2 text-accent text-weight-medium"
-                >
-                  {{ previousArticle.title }}
-                </router-link>
-              </div>
-            </div>
-            <div v-if="nextArticle" class="q-py-lg">
-              <p
-                class="text-uppercase text-caption text-weight-medium"
-                :class="getTextColorClass('text-grey-7')"
-              >
-                Article suivant
-              </p>
-              <div class="row w-250">
-                <router-link
-                  :to="`/blog/${nextArticle.slug}`"
-                  class="text-body2 text-accent text-weight-medium"
-                >
-                  {{ nextArticle.title }}
-                </router-link>
-              </div>
             </div>
           </div>
           <q-btn flat to="/blog" class="text-accent q-px-none q-mb-md" no-caps>
@@ -79,7 +47,7 @@
           </q-btn>
         </div>
         <div class="q-mb-lg">
-          <div v-html="article.content"></div>
+          <div v-html="article.content.document"></div>
         </div>
       </div>
     </div>
@@ -90,43 +58,50 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
+import gql from "graphql-tag";
+import { useQuery } from "@vue/apollo-composable";
 
 const route = useRoute();
-const props = defineProps({
-  darkMode: Boolean,
-});
 
-const articles = ref([]);
-const article = ref(null);
-
-onMounted(async () => {
-  try {
-    const response = await fetch("/data/articles.json");
-    articles.value = await response.json();
-    article.value = articles.value.find(
-      (a) => a.slug === route.params.articleSlug
-    );
-  } catch (error) {
-    console.error("Error loading articles:", error);
+const GET_POST = gql`
+  query GetPost($slug: String!) {
+    post(where: { slug: $slug }) {
+      title
+      content {
+        document
+      }
+      tags {
+        name
+      }
+      author {
+        name
+      }
+      createdAt
+    }
   }
+`;
+
+const article = ref(null);
+const formattedDate = ref("");
+
+// Récupération des données de l'article
+const {
+  result: postData,
+  loading,
+  error,
+} = useQuery(GET_POST, {
+  slug: route.params.articleSlug,
 });
 
-const previousArticle = computed(() => {
-  const currentIndex = articles.value.findIndex(
-    (a) => a.slug === route.params.articleSlug
-  );
-  return currentIndex < articles.value.length - 1
-    ? articles.value[currentIndex + 1]
-    : null;
-});
-
-const nextArticle = computed(() => {
-  const currentIndex = articles.value.findIndex(
-    (a) => a.slug === route.params.articleSlug
-  );
-  return currentIndex > 0 ? articles.value[currentIndex - 1] : null;
+watchEffect(() => {
+  if (postData.value && postData.value.post) {
+    article.value = postData.value.post;
+    formattedDate.value = new Date(
+      postData.value.post.createdAt
+    ).toLocaleDateString("fr-FR");
+  }
 });
 
 function getTextColorClass(lightClass) {
@@ -138,9 +113,3 @@ function getTextColorClass(lightClass) {
   return props.darkMode ? darkModeMapping[lightClass] : lightClass;
 }
 </script>
-
-<style scoped>
-a {
-  text-decoration: none;
-}
-</style>

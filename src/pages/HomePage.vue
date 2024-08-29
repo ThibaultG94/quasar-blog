@@ -11,45 +11,49 @@
       astuces et les conseils pour les développeurs web et mobiles.
     </p>
 
-    <!-- Section des articles -->
-    <div class="column q-gutter-lg q-pt-lg">
-      <div
-        class="col-to-row no-wrap q-gutter-sm q-pb-md border-line"
-        v-for="news in newsItems"
-        :key="news.date"
-      >
+    <div v-if="loading">Chargement des articles...</div>
+    <div v-else-if="error">Erreur : {{ error.message }}</div>
+    <div v-else>
+      <!-- Section des articles -->
+      <div class="column q-gutter-lg q-pt-lg">
         <div
-          class="w-150 text-subtitle1 text-weight-medium shrink-0"
-          :class="getTextColorClass('text-grey-7')"
+          class="col-to-row no-wrap q-gutter-sm q-pb-md border-line"
+          v-for="news in newsItems"
+          :key="news.id"
         >
-          {{ news.date }}
-        </div>
-        <div>
-          <h2 class="text-h5 text-weight-bold q-mb-xs">
-            {{ news.title }}
-          </h2>
-          <div class="row wrap q-gutter-sm q-mb-sm">
-            <span
-              class="text-body2 text-accent text-weight-bold"
-              v-for="tag in news.tags"
-              :key="tag"
-              >{{ tag }}</span
-            >
-          </div>
-          <p
-            class="text-body1 q-mt-lg q-mb-md"
+          <div
+            class="w-150 text-subtitle1 text-weight-medium shrink-0"
             :class="getTextColorClass('text-grey-7')"
           >
-            {{ news.description }}
-          </p>
-          <q-btn
-            flat
-            :to="`/blog/${news.slug}`"
-            label="En savoir plus"
-            class="text-accent text-subtitle1 q-px-none text-weight-bold"
-            no-caps
-            icon-right="arrow_forward"
-          />
+            {{ new Date(news.createdAt).toLocaleDateString("fr-FR") }}
+          </div>
+          <div>
+            <h2 class="text-h5 text-weight-bold q-mb-xs">
+              {{ news.title }}
+            </h2>
+            <div class="row wrap q-gutter-sm q-mb-sm">
+              <span
+                class="text-body2 text-accent text-weight-bold"
+                v-for="tag in news.tags"
+                :key="tag.id"
+                >{{ tag.name }}</span
+              >
+            </div>
+            <p
+              class="text-body1 q-mt-lg q-mb-md"
+              :class="getTextColorClass('text-grey-7')"
+            >
+              {{ news.description }}
+            </p>
+            <q-btn
+              flat
+              :to="`/blog/${news.id}`"
+              label="En savoir plus"
+              class="text-accent text-subtitle1 q-px-none text-weight-bold"
+              no-caps
+              icon-right="arrow_forward"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -65,24 +69,10 @@
       />
     </div>
   </div>
-
-  <!-- Section des informations utilisateur -->
-  <div>
-    <div v-if="loading">Chargement...</div>
-    <div v-else-if="error">Erreur: {{ error.message }}</div>
-    <div v-else-if="user">
-      <h2 class="text-h5 text-weight-bold q-mb-xs">
-        Informations de l'utilisateur :
-      </h2>
-      <p class="text-body1 q-mt-lg q-mb-md">Nom : {{ user.name }}</p>
-      <p class="text-body1 q-mt-lg q-mb-md">Email : {{ user.email }}</p>
-    </div>
-    <div v-else>Aucune donnée utilisateur disponible.</div>
-  </div>
 </template>
 
 <script setup>
-import { ref, onMounted, watchEffect } from "vue";
+import { ref, watchEffect } from "vue";
 import gql from "graphql-tag";
 import { useQuery } from "@vue/apollo-composable";
 
@@ -91,46 +81,32 @@ const props = defineProps({
   darkMode: Boolean,
 });
 
-// Configuration de la requête GraphQL pour récupérer les informations utilisateur
-const GET_USER = gql`
-  query GetUser($email: String!) {
-    user(where: { email: $email }) {
+// Configuration de la requête GraphQL pour récupérer les articles
+const GET_POSTS = gql`
+  query Posts {
+    posts {
       id
-      name
-      email
+      createdAt
+      description
+      title
+      tags {
+        id
+        name
+      }
     }
   }
 `;
 
-// L'email à rechercher (fixé ici pour l'exemple)
-const userEmail = "thibault.guilhem@gmail.com";
+// Récupération des articles via Apollo
+const { result: postsData, loading, error } = useQuery(GET_POSTS);
 
-// Récupération des données utilisateur via Apollo
-const {
-  result: userData,
-  loading,
-  error,
-} = useQuery(GET_USER, { email: userEmail });
-
-// Variable réactive pour stocker l'utilisateur
-const user = ref(null);
-
-// Surveiller les changements dans userData et mettre à jour l'utilisateur
-watchEffect(() => {
-  if (userData.value && userData.value.user) {
-    user.value = userData.value.user;
-  }
-});
-
-// Chargement des articles (existant)
+// Variable réactive pour stocker les articles
 const newsItems = ref([]);
 
-onMounted(async () => {
-  try {
-    const response = await fetch("/data/articles.json");
-    newsItems.value = await response.json();
-  } catch (error) {
-    console.error("Error loading articles:", error);
+// Surveiller les changements dans postsData et mettre à jour les articles
+watchEffect(() => {
+  if (postsData.value && postsData.value.posts) {
+    newsItems.value = postsData.value.posts;
   }
 });
 
