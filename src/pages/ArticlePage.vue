@@ -49,9 +49,15 @@
 
         <!-- Affichage du contenu de l'article -->
         <div class="q-mb-lg">
-          <div v-for="(child, index) in article.content.document" :key="index">
+          <div
+            v-for="(child, index) in article.content.document"
+            :key="index"
+            :class="getMarginClasses(child)"
+          >
             <template v-if="child.type === 'heading'">
-              <h3>{{ child.children[0].text }}</h3>
+              <component :is="'h' + child.level">{{
+                child.children[0].text
+              }}</component>
             </template>
             <template v-else-if="child.type === 'paragraph'">
               <p>{{ child.children[0].text }}</p>
@@ -59,7 +65,11 @@
             <template v-else-if="child.type === 'unordered-list'">
               <ul>
                 <li v-for="(item, i) in child.children" :key="i">
-                  {{ item.children[0].text }}
+                  <!-- Gestion des éléments imbriqués, comme le texte en gras -->
+                  <span v-for="(part, j) in item.children" :key="j">
+                    <strong v-if="part.bold">{{ part.text }}</strong>
+                    <span v-else>{{ part.text }}</span>
+                  </span>
                 </li>
               </ul>
             </template>
@@ -100,6 +110,19 @@ onMounted(() => {
     formattedDate.value = new Date(post.createdAt).toLocaleDateString("fr-FR");
   }
 });
+
+// Fonction pour appliquer les marges selon le type de contenu
+function getMarginClasses(child) {
+  if (child.type === "heading") {
+    return "q-mt-lg q-mb-md";
+  } else if (child.type === "paragraph") {
+    return "q-mb-md";
+  } else if (child.type === "unordered-list") {
+    return "q-mt-md q-mb-md";
+  } else {
+    return "q-mb-md";
+  }
+}
 
 function getTextColorClass(lightClass) {
   const darkModeMapping = {
