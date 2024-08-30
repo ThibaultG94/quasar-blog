@@ -21,7 +21,7 @@
               class="w-40 h-40 rounded q-mr-sm"
             />
             <div class="text-body2 text-weight-medium">
-              {{ article.author }}
+              {{ article.author?.name }}
             </div>
           </div>
           <div class="q-py-xl border-line">
@@ -47,7 +47,12 @@
           </q-btn>
         </div>
         <div class="q-mb-lg">
-          <div v-html="article.content.document[0].children[0].text"></div>
+          <div
+            v-for="(child, index) in article.content.document[0].children"
+            :key="index"
+          >
+            <p v-if="child.text" v-html="child.text"></p>
+          </div>
         </div>
       </div>
     </div>
