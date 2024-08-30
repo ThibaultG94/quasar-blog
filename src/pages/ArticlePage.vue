@@ -21,7 +21,7 @@
               class="w-40 h-40 rounded q-mr-sm"
             />
             <div class="text-body2 text-weight-medium">
-              {{ article.author.name }}
+              {{ article.author }}
             </div>
           </div>
           <div class="q-py-xl border-line">
@@ -47,7 +47,7 @@
           </q-btn>
         </div>
         <div class="q-mb-lg">
-          <div v-html="article.content.document"></div>
+          <div v-html="article.content.document[0].children[0].text"></div>
         </div>
       </div>
     </div>
@@ -58,49 +58,31 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from "vue";
+import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
-import gql from "graphql-tag";
-import { useQuery } from "@vue/apollo-composable";
+import { usePostStore } from "src/stores/postStore";
+
+const props = defineProps({
+  darkMode: Boolean,
+});
 
 const route = useRoute();
-
-const GET_POST = gql`
-  query GetPost($slug: String!) {
-    post(where: { slug: $slug }) {
-      title
-      content {
-        document
-      }
-      tags {
-        name
-      }
-      author {
-        name
-      }
-      createdAt
-    }
-  }
-`;
+const postStore = usePostStore();
 
 const article = ref(null);
 const formattedDate = ref("");
 
-// Récupération des données de l'article
-const {
-  result: postData,
-  loading,
-  error,
-} = useQuery(GET_POST, {
-  slug: route.params.articleSlug,
-});
+onMounted(() => {
+  // On récupère l'article en fonction du slug
+  const post = postStore.getPostBySlug(route.params.articleSlug);
 
-watchEffect(() => {
-  if (postData.value && postData.value.post) {
-    article.value = postData.value.post;
-    formattedDate.value = new Date(
-      postData.value.post.createdAt
-    ).toLocaleDateString("fr-FR");
+  if (post) {
+    // Si on trouve un post, on le met dans 'article'
+    article.value = post;
+    formattedDate.value = new Date(post.createdAt).toLocaleDateString("fr-FR");
+  } else {
+    // Ici, si nécessaire, tu peux déclencher une nouvelle requête pour récupérer l'article via son ID
+    // Mais généralement, l'article devrait être déjà chargé dans ton store
   }
 });
 

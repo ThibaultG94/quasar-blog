@@ -18,7 +18,7 @@
       <div class="column q-gutter-lg q-pt-lg">
         <div
           class="col-to-row no-wrap q-gutter-sm q-pb-md border-line"
-          v-for="news in newsItems"
+          v-for="news in posts"
           :key="news.id"
         >
           <div
@@ -47,7 +47,7 @@
             </p>
             <q-btn
               flat
-              :to="`/blog/${news.id}`"
+              :to="`/blog/${news.slug}`"
               label="En savoir plus"
               class="text-accent text-subtitle1 q-px-none text-weight-bold"
               no-caps
@@ -72,42 +72,35 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from "vue";
-import gql from "graphql-tag";
-import { useQuery } from "@vue/apollo-composable";
+import { ref, watchEffect, onMounted } from "vue";
+import { usePostStore } from "src/stores/postStore";
 
 // Déclaration des propriétés
 const props = defineProps({
   darkMode: Boolean,
 });
 
-// Configuration de la requête GraphQL pour récupérer les articles
-const GET_POSTS = gql`
-  query Posts {
-    posts {
-      id
-      createdAt
-      description
-      title
-      tags {
-        id
-        name
-      }
-    }
-  }
-`;
+// Accès au store
+const postStore = usePostStore();
 
-// Récupération des articles via Apollo
-const { result: postsData, loading, error } = useQuery(GET_POSTS);
+// Variables réactives pour les posts, loading et error
+const posts = ref([]);
+const loading = ref(false);
+const error = ref(null);
 
-// Variable réactive pour stocker les articles
-const newsItems = ref([]);
+// Récupération des articles via le store lors du montage du composant
+onMounted(async () => {
+  await postStore.fetchPosts();
+  posts.value = postStore.posts;
+  loading.value = postStore.loading;
+  error.value = postStore.error;
+});
 
-// Surveiller les changements dans postsData et mettre à jour les articles
+// Surveiller les changements dans le store pour mettre à jour les variables locales
 watchEffect(() => {
-  if (postsData.value && postsData.value.posts) {
-    newsItems.value = postsData.value.posts;
-  }
+  posts.value = postStore.posts;
+  loading.value = postStore.loading;
+  error.value = postStore.error;
 });
 
 // Fonction pour déterminer la classe CSS des couleurs de texte en fonction du mode sombre
