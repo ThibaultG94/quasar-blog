@@ -46,12 +46,27 @@
             <span class="text-subtitle1">Retour au blog</span>
           </q-btn>
         </div>
+
+        <!-- Affichage du contenu de l'article -->
         <div class="q-mb-lg">
-          <div
-            v-for="(child, index) in article.content.document[0].children"
-            :key="index"
-          >
-            <p v-if="child.text" v-html="child.text"></p>
+          <div v-for="(child, index) in article.content.document" :key="index">
+            <template v-if="child.type === 'heading'">
+              <h3>{{ child.children[0].text }}</h3>
+            </template>
+            <template v-else-if="child.type === 'paragraph'">
+              <p>{{ child.children[0].text }}</p>
+            </template>
+            <template v-else-if="child.type === 'unordered-list'">
+              <ul>
+                <li v-for="(item, i) in child.children" :key="i">
+                  {{ item.children[0].text }}
+                </li>
+              </ul>
+            </template>
+            <template v-else>
+              <!-- Pour tout autre type non géré -->
+              <pre>{{ child[0].text }}</pre>
+            </template>
           </div>
         </div>
       </div>
@@ -78,16 +93,11 @@ const article = ref(null);
 const formattedDate = ref("");
 
 onMounted(() => {
-  // On récupère l'article en fonction du slug
   const post = postStore.getPostBySlug(route.params.articleSlug);
 
   if (post) {
-    // Si on trouve un post, on le met dans 'article'
     article.value = post;
     formattedDate.value = new Date(post.createdAt).toLocaleDateString("fr-FR");
-  } else {
-    // Ici, si nécessaire, tu peux déclencher une nouvelle requête pour récupérer l'article via son ID
-    // Mais généralement, l'article devrait être déjà chargé dans ton store
   }
 });
 
