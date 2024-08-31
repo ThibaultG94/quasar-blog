@@ -54,18 +54,30 @@
             :key="index"
             :class="getMarginClasses(child)"
           >
+            <!-- Gestion des titres -->
             <template v-if="child.type === 'heading'">
-              <component :is="'h' + child.level">{{
-                child.children[0].text
-              }}</component>
+              <component :is="'h' + child.level">
+                <span v-for="(part, idx) in child.children" :key="idx">
+                  <strong v-if="part.bold">{{ part.text }}</strong>
+                  <span v-else>{{ part.text }}</span>
+                </span>
+              </component>
             </template>
+
+            <!-- Gestion des paragraphes -->
             <template v-else-if="child.type === 'paragraph'">
-              <p>{{ child.children[0].text }}</p>
+              <p>
+                <span v-for="(part, idx) in child.children" :key="idx">
+                  <strong v-if="part.bold">{{ part.text }}</strong>
+                  <span v-else>{{ part.text }}</span>
+                </span>
+              </p>
             </template>
+
+            <!-- Gestion des listes non ordonnées -->
             <template v-else-if="child.type === 'unordered-list'">
               <ul>
                 <li v-for="(item, i) in child.children" :key="i">
-                  <!-- Gestion des éléments imbriqués, comme le texte en gras -->
                   <span v-for="(part, j) in item.children" :key="j">
                     <strong v-if="part.bold">{{ part.text }}</strong>
                     <span v-else>{{ part.text }}</span>
@@ -73,6 +85,7 @@
                 </li>
               </ul>
             </template>
+
             <template v-else>
               <!-- Pour tout autre type non géré -->
               <pre>{{ child[0].text }}</pre>
