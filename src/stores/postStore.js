@@ -21,6 +21,9 @@ export const usePostStore = defineStore("postStore", {
             slug
             title
             description
+            author {
+              name
+            }
             content {
               document
             }

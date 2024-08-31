@@ -79,8 +79,12 @@
               <ul>
                 <li v-for="(item, i) in child.children" :key="i">
                   <span v-for="(part, j) in item.children" :key="j">
-                    <strong v-if="part.bold">{{ part.text }}</strong>
-                    <span v-else>{{ part.text }}</span>
+                    <span v-if="part.type === 'list-item-content'">
+                      <span v-for="(subPart, k) in part.children" :key="k">
+                        <strong v-if="subPart.bold">{{ subPart.text }}</strong>
+                        <span v-else>{{ subPart.text }}</span>
+                      </span>
+                    </span>
                   </span>
                 </li>
               </ul>
