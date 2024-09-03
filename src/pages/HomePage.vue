@@ -22,10 +22,16 @@
           :key="news.id"
         >
           <div
-            class="w-150 text-subtitle1 text-weight-medium shrink-0"
+            class="w-200 text-subtitle1 text-weight-medium shrink-0"
             :class="getTextColorClass('text-grey-7')"
           >
-            {{ new Date(news.createdAt).toLocaleDateString("fr-FR") }}
+            {{
+              new Date(news.createdAt).toLocaleDateString("fr-FR", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })
+            }}
           </div>
           <div>
             <h2 class="text-h5 text-weight-bold q-mb-xs">

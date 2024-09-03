@@ -124,7 +124,11 @@ onMounted(async () => {
 
   if (post) {
     article.value = post;
-    formattedDate.value = new Date(post.createdAt).toLocaleDateString("fr-FR");
+    formattedDate.value = new Date(post.createdAt).toLocaleDateString("fr-FR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
   }
 });
 

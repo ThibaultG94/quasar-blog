@@ -48,12 +48,18 @@
         <div
           class="q-py-md q-pl-xs-lg q-pl-lg-xl q-mb-none q-border-b column q-gutter-md"
         >
-          <div v-for="post in filteredPosts" :key="post.id" class="q-mb-lg">
+          <div v-for="post in paginatedPosts" :key="post.id" class="q-mb-lg">
             <div
               :class="getTextColorClass('text-grey-7')"
               class="text-subtitle1 text-weight-medium"
             >
-              {{ new Date(post.createdAt).toLocaleDateString("fr-FR") }}
+              {{
+                new Date(post.createdAt).toLocaleDateString("fr-FR", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })
+              }}
             </div>
             <div>
               <router-link
@@ -139,12 +145,6 @@ const totalPages = computed(() => {
   return Math.ceil(posts.value.length / postsPerPage);
 });
 
-const paginatedPosts = computed(() => {
-  const start = (currentPage.value - 1) * postsPerPage;
-  const end = start + postsPerPage;
-  return filteredPosts.value.slice(start, end);
-});
-
 // Computed property pour filtrer les posts par tags sélectionnés
 const filteredPosts = computed(() => {
   if (selectedTags.value.size === 0) {
@@ -153,6 +153,12 @@ const filteredPosts = computed(() => {
   return posts.value.filter((post) =>
     post.tags.some((tag) => selectedTags.value.has(tag.name))
   );
+});
+
+const paginatedPosts = computed(() => {
+  const start = (currentPage.value - 1) * postsPerPage;
+  const end = start + postsPerPage;
+  return filteredPosts.value.slice(start, end);
 });
 
 onMounted(async () => {
