@@ -37,6 +37,9 @@ export const usePostStore = defineStore("postStore", {
       `;
 
       try {
+        if (this.posts.length) {
+          return;
+        }
         const { data } = await apolloClient.query({
           query: GET_POSTS,
         });

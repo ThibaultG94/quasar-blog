@@ -18,7 +18,7 @@
       <div class="column q-gutter-lg q-pt-lg">
         <div
           class="col-to-row no-wrap q-gutter-sm q-pb-md border-line"
-          v-for="news in posts"
+          v-for="news in recentPosts"
           :key="news.id"
         >
           <div
@@ -72,7 +72,7 @@
 </template>
 
 <script setup>
-import { ref, watchEffect, onMounted } from "vue";
+import { ref, watchEffect, onMounted, computed } from "vue";
 import { usePostStore } from "src/stores/postStore";
 
 // Déclaration des propriétés
@@ -101,6 +101,14 @@ watchEffect(() => {
   posts.value = postStore.posts;
   loading.value = postStore.loading;
   error.value = postStore.error;
+});
+
+// Calculer les articles récents (limité à 4 articles)
+const recentPosts = computed(() => {
+  return posts.value
+    .slice()
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .slice(0, 4);
 });
 
 // Fonction pour déterminer la classe CSS des couleurs de texte en fonction du mode sombre

@@ -42,17 +42,17 @@
         <div
           class="q-py-md q-pl-xs-lg q-pl-lg-xl q-mb-none q-border-b column q-gutter-md"
         >
-          <div v-for="news in paginatedNews" :key="news.date" class="q-mb-lg">
+          <div v-for="post in paginatedPosts" :key="post.id" class="q-mb-lg">
             <div
               :class="getTextColorClass('text-grey-7')"
               class="text-subtitle1 text-weight-medium"
             >
-              {{ news.date }}
+              {{ new Date(post.createdAt).toLocaleDateString("fr-FR") }}
             </div>
             <div>
               <router-link
                 style="text-decoration: none; color: inherit"
-                :to="`/blog/${news.slug}`"
+                :to="`/blog/${post.slug}`"
                 v-slot="{ navigate }"
               >
                 <div @click="navigate" :class="getTextColorClass('text-dark')">
@@ -60,15 +60,15 @@
                     :class="getTextColorClass('text-dark')"
                     class="text-h5 text-weight-bold q-mb-xs q-mt-none"
                   >
-                    {{ news.title }}
+                    {{ post.title }}
                   </h2>
                   <div class="row items-start q-gutter-xs q-mb-md">
                     <span
                       class="text-body2 text-accent text-weight-bold text-uppercase"
-                      v-for="tag in news.tags"
+                      v-for="tag in post.tags"
                       :key="tag"
                     >
-                      {{ tag }}
+                      {{ tag.name }}
                     </span>
                   </div>
                 </div>
@@ -77,7 +77,7 @@
                 :class="getTextColorClass('text-grey-7')"
                 class="q-mb-sm text-subtitle1 darky"
               >
-                {{ news.description }}
+                {{ post.description }}
               </p>
             </div>
           </div>
@@ -109,6 +109,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
+import { usePostStore } from "src/stores/postStore";
 
 defineOptions({
   name: "BlogPage",
@@ -118,38 +119,43 @@ const props = defineProps({
   darkMode: Boolean,
 });
 
-const newsItems = ref([]);
+// Accès au store
+const postStore = usePostStore();
+
+// Variables réactives pour les posts, loading et error
+const posts = ref([]);
+const loading = ref(false);
+const error = ref(null);
 const categories = ref([]);
 const currentPage = ref(1);
-const itemsPerPage = 5;
+const postsPerPage = 5;
 
 const totalPages = computed(() => {
-  return Math.ceil(newsItems.value.length / itemsPerPage);
+  return Math.ceil(posts.value.length / postsPerPage);
 });
 
-const paginatedNews = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  return newsItems.value.slice(start, end);
+const paginatedPosts = computed(() => {
+  const start = (currentPage.value - 1) * postsPerPage;
+  const end = start + postsPerPage;
+  return posts.value.slice(start, end);
 });
 
+// Récupération des articles via le store lors du montage du composant
 onMounted(async () => {
-  try {
-    const response = await fetch("/data/articles.json");
-    newsItems.value = await response.json();
-    updateCategories();
-  } catch (error) {
-    console.error("Error loading articles:", error);
-  }
+  await postStore.fetchPosts();
+  posts.value = postStore.posts;
+  loading.value = postStore.loading;
+  error.value = postStore.error;
+  updateCategories();
 });
 
-function updateCategories() {
-  const tagCounts = newsItems.value.reduce((acc, article) => {
+async function updateCategories() {
+  const tagCounts = await posts.value.reduce((acc, article) => {
     article.tags.forEach((tag) => {
-      if (acc[tag]) {
-        acc[tag]++;
+      if (acc[tag.name]) {
+        acc[tag.name]++;
       } else {
-        acc[tag] = 1;
+        acc[tag.name] = 1;
       }
     });
     return acc;
