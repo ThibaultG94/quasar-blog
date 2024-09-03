@@ -119,8 +119,8 @@ const postStore = usePostStore();
 const article = ref(null);
 const formattedDate = ref("");
 
-onMounted(() => {
-  const post = postStore.getPostBySlug(route.params.articleSlug);
+onMounted(async () => {
+  const post = await postStore.getPostBySlug(route.params.articleSlug);
 
   if (post) {
     article.value = post;

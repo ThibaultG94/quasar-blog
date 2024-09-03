@@ -50,10 +50,13 @@ export const usePostStore = defineStore("postStore", {
     getPostById(id) {
       return this.posts.find((post) => post.id === id);
     },
-    getPostBySlug(slug) {
+    async getPostBySlug(slug) {
       const post = this.posts.find((post) => post.slug === slug);
-      console.log(post);
-      return this.posts.find((post) => post.slug === slug);
+      if (!post) {
+        await this.fetchPosts();
+      }
+      const newPost = this.posts.find((post) => post.slug === slug);
+      return newPost;
     },
   },
 });
