@@ -150,3 +150,12 @@ function getTextColorClass(lightClass) {
   return props.darkMode ? darkModeMapping[lightClass] : lightClass;
 }
 </script>
+
+<style scoped>
+p,
+span {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+</style>
