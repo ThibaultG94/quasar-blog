@@ -25,10 +25,16 @@
               v-for="category in categories"
               :key="category.name"
               clickable
+              @click="toggleTagSelection(category.name)"
             >
               <q-item-section>
                 <q-item-label
-                  :class="getTextColorClass('text-grey-7')"
+                  :class="[
+                    getTextColorClass('text-grey-7'),
+                    isSelected(category.name)
+                      ? 'text-weight-bolder text-grey-8'
+                      : '',
+                  ]"
                   class="q-pb-md"
                 >
                   {{ category.name }} <span>({{ category.count }})</span>
@@ -42,7 +48,7 @@
         <div
           class="q-py-md q-pl-xs-lg q-pl-lg-xl q-mb-none q-border-b column q-gutter-md"
         >
-          <div v-for="post in paginatedPosts" :key="post.id" class="q-mb-lg">
+          <div v-for="post in filteredPosts" :key="post.id" class="q-mb-lg">
             <div
               :class="getTextColorClass('text-grey-7')"
               class="text-subtitle1 text-weight-medium"
@@ -119,14 +125,13 @@ const props = defineProps({
   darkMode: Boolean,
 });
 
-// Accès au store
 const postStore = usePostStore();
 
-// Variables réactives pour les posts, loading et error
 const posts = ref([]);
 const loading = ref(false);
 const error = ref(null);
 const categories = ref([]);
+const selectedTags = ref(new Set()); // Set pour stocker les tags sélectionnés
 const currentPage = ref(1);
 const postsPerPage = 5;
 
@@ -137,10 +142,19 @@ const totalPages = computed(() => {
 const paginatedPosts = computed(() => {
   const start = (currentPage.value - 1) * postsPerPage;
   const end = start + postsPerPage;
-  return posts.value.slice(start, end);
+  return filteredPosts.value.slice(start, end);
 });
 
-// Récupération des articles via le store lors du montage du composant
+// Computed property pour filtrer les posts par tags sélectionnés
+const filteredPosts = computed(() => {
+  if (selectedTags.value.size === 0) {
+    return posts.value;
+  }
+  return posts.value.filter((post) =>
+    post.tags.some((tag) => selectedTags.value.has(tag.name))
+  );
+});
+
 onMounted(async () => {
   await postStore.fetchPosts();
   posts.value = postStore.posts;
@@ -165,6 +179,20 @@ async function updateCategories() {
     name: tag,
     count: tagCounts[tag],
   }));
+}
+
+function toggleTagSelection(tagName) {
+  if (selectedTags.value.has(tagName)) {
+    selectedTags.value.delete(tagName);
+  } else {
+    selectedTags.value.add(tagName);
+  }
+  // Réinitialiser la page courante lorsque le filtre change
+  currentPage.value = 1;
+}
+
+function isSelected(tagName) {
+  return selectedTags.value.has(tagName);
 }
 
 function nextPage() {
