@@ -24,9 +24,9 @@
               {{ article.author?.name }}
             </div>
           </div>
-          <div class="q-py-xl border-line">
+          <div class="q-py-lg border-line">
             <p
-              class="text-uppercase text-caption text-weight-medium"
+              class="text-uppercase text-caption text-weight-medium q-mb-md"
               :class="getTextColorClass('text-grey-7')"
             >
               Tags
@@ -41,7 +41,7 @@
               </span>
             </div>
           </div>
-          <q-btn flat to="/blog" class="text-accent q-px-none q-mb-md" no-caps>
+          <q-btn flat to="/blog" class="text-accent q-px-none q-my-md" no-caps>
             <q-icon name="arrow_back" class="q-mr-sm" />
             <span class="text-subtitle1">Retour au blog</span>
           </q-btn>
@@ -153,7 +153,7 @@ function getTextColorClass(lightClass) {
 
 <style scoped>
 p,
-span {
+li {
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.6;
