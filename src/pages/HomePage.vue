@@ -105,10 +105,7 @@ watchEffect(() => {
 
 // Calculer les articles récents (limité à 4 articles)
 const recentPosts = computed(() => {
-  return posts.value
-    .slice()
-    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-    .slice(0, 4);
+  return posts.value.slice(0, 4);
 });
 
 // Fonction pour déterminer la classe CSS des couleurs de texte en fonction du mode sombre
