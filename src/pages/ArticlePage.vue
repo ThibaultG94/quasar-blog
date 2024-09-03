@@ -158,8 +158,9 @@ function getTextColorClass(lightClass) {
 <style scoped>
 p,
 li {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
 }
 </style>
