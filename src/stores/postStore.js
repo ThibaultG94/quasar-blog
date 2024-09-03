@@ -10,13 +10,13 @@ export const usePostStore = defineStore("postStore", {
     error: null,
   }),
   actions: {
-    async fetchPosts() {
+    async fetchPosts(orderBy = { createdAt: "desc" }) {
       this.loading = true;
       this.error = null;
 
       const GET_POSTS = gql`
-        query Posts {
-          posts {
+        query Posts($orderBy: [PostOrderByInput!]!) {
+          posts(orderBy: $orderBy) {
             id
             slug
             title
@@ -42,6 +42,7 @@ export const usePostStore = defineStore("postStore", {
         }
         const { data } = await apolloClient.query({
           query: GET_POSTS,
+          variables: { orderBy },
         });
         this.posts = data.posts;
       } catch (err) {
