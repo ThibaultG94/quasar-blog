@@ -6,7 +6,7 @@
         <div class="text-center col-3">
           <div class="w-200 h-200 q-mx-auto q-mb-sm">
             <img
-              src="/img/avatar.png"
+              src="/img/avatar.webp"
               alt="Profile Picture"
               class="w-200 h-200 rounded"
             />
