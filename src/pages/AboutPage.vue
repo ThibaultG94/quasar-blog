@@ -58,31 +58,32 @@
           class="text-subtitle1 col"
         >
           <p class="q-mb-lg">
-            Je m'appelle Thibault Guilhem, développeur web autodidacte passionné
-            par les technologies modernes du web. Après avoir exploré divers
-            domaines professionnels, notamment en tant que géomètre topographe,
-            jardinier paysagiste et monteur, j’ai trouvé ma véritable vocation
-            dans le développement web.
+            Le parcours qui mène au développement web est rarement linéaire.
+            Après plusieurs détours professionnels, c'est dans ce domaine que
+            j'ai trouvé un terrain d'expression à la hauteur de ma curiosité. Ce
+            blog est le journal de bord d'un apprentissage autodidacte, où
+            chaque projet représente une nouvelle découverte, chaque défi une
+            occasion de progresser. Ici, pas de CV formaté, mais plutôt le
+            témoignage d'une exploration continue, le reflet d'idées qui ne
+            cessent d'évoluer.
           </p>
           <p class="q-mb-lg">
-            Depuis bientôt deux ans, je me forme intensivement en autodidacte et
-            ai acquis des compétences solides en Next.js, React, Node.js,
-            TypeScript, Tailwind CSS, et MongoDB. Mon projet principal est le
-            développement de mon application "Task Manager", qui utilise ces
-            technologies pour offrir une gestion de tâches performante et
-            sécurisée. Cette application permet d’organiser des tâches
-            individuelles ou en groupe au sein de différents espaces de travail.
+            Les projets présentés ici sont le fruit d'un apprentissage continu.
+            React et Node.js constituent les piliers techniques de ce travail,
+            mais ils ne sont que des outils au service d'une approche plus
+            globale.
           </p>
           <p class="q-mb-lg">
-            En dehors du code, je suis un grand amateur de cinéma et de musique.
-            J’aime aussi suivre de près les avancées dans le domaine de
-            l’intelligence artificielle, notamment avec des outils comme ChatGPT
-            et Copilot.
+            L'intelligence artificielle et l'automatisation dessinent les
+            contours d'un avenir aussi fascinant qu'incertain. Observer ces
+            mutations technologiques, c'est tenter de décrypter les rouages
+            d'une société en pleine métamorphose.
           </p>
           <p>
-            Mon objectif est de continuer à apprendre et à évoluer en tant que
-            développeur, en créant des applications innovantes et en contribuant
-            à des projets stimulants.
+            Le code n'est pas qu'une série d'instructions ; c'est un prisme à
+            travers lequel on peut appréhender le monde, tout en gardant un
+            regard lucide sur ses implications. Dans cet univers binaire, la
+            pensée, elle, reste résolument analogique.
           </p>
         </div>
       </div>
