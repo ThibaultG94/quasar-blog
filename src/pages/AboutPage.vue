@@ -9,8 +9,9 @@
               <img
                 src="/img/avatar.webp"
                 alt="Profile Picture"
-                width="220"
-                height="220"
+                width="245"
+                height="245"
+                style="transform: translateX(-15px) translateY(-10px)"
               />
             </div>
           </div>

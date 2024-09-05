@@ -19,8 +19,9 @@
               <img
                 src="/img/avatar.webp"
                 alt="Profile Picture"
-                width="45"
-                height="45"
+                width="50"
+                height="50"
+                style="transform: translateX(-5px) translateY(-1px)"
               />
             </div>
             <div class="text-body2 text-weight-medium">
