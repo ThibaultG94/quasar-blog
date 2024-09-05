@@ -8,49 +8,11 @@
         >
           {{ formattedDate }}
         </p>
-        <h1 class="text-size-h3 text-weight-bold q-pb-md border-line">
+        <h1 class="text-size-h3 text-weight-bold q-pb-lg border-line">
           {{ article.title }}
         </h1>
       </div>
-      <div class="col-to-row">
-        <div class="q-mr-xl">
-          <div class="row items-center q-pt-lg q-pb-xl border-line">
-            <div class="w-40 h-40 rounded overflow-hidden q-mr-sm">
-              <img
-                src="/img/avatar.webp"
-                alt="Profile Picture"
-                width="50"
-                height="50"
-                style="transform: translateX(-5px) translateY(-1px)"
-              />
-            </div>
-            <div class="text-body2 text-weight-medium">
-              {{ article.author?.name }}
-            </div>
-          </div>
-          <div class="q-py-lg border-line">
-            <p
-              class="text-uppercase text-caption text-weight-medium q-mb-md"
-              :class="getTextColorClass('text-grey-7')"
-            >
-              Tags
-            </p>
-            <div class="row w-250">
-              <span
-                class="q-pr-md text-body2 text-accent text-weight-medium"
-                v-for="tag in article.tags"
-                :key="tag.name"
-              >
-                {{ tag.name }}
-              </span>
-            </div>
-          </div>
-          <q-btn flat to="/blog" class="text-accent q-px-none q-my-md" no-caps>
-            <q-icon name="arrow_back" class="q-mr-sm" />
-            <span class="text-subtitle1">Retour au blog</span>
-          </q-btn>
-        </div>
-
+      <div class="col q-mt-lg">
         <!-- Affichage du contenu de l'article -->
         <div class="q-mb-lg">
           <div
