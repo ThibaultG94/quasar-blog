@@ -8,11 +8,11 @@
         >
           {{ formattedDate }}
         </p>
-        <h1 class="text-size-h3 text-weight-bold q-pb-lg border-line">
+        <h1 class="text-size-h3 text-weight-bold q-pb-xl border-line">
           {{ article.title }}
         </h1>
       </div>
-      <div class="col q-mt-lg">
+      <div class="col q-mt-xl">
         <!-- Affichage du contenu de l'article -->
         <div class="q-mb-lg">
           <div
