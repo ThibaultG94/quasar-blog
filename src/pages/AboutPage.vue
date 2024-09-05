@@ -5,11 +5,14 @@
       <div class="col-to-row no-wrap q-gutter-lg q-mt-sm">
         <div class="text-center col-3">
           <div class="w-200 h-200 q-mx-auto q-mb-sm">
-            <img
-              src="/img/avatar.webp"
-              alt="Profile Picture"
-              class="w-200 h-200 rounded"
-            />
+            <div class="rounded w-200 h-200 overflow-hidden">
+              <img
+                src="/img/avatar.webp"
+                alt="Profile Picture"
+                width="220"
+                height="220"
+              />
+            </div>
           </div>
           <h2 class="text-h5 text-weight-bold q-mt-md q-mb-xs">
             Thibault Guilhem

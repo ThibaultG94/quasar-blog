@@ -15,11 +15,14 @@
       <div class="col-to-row">
         <div class="q-mr-xl">
           <div class="row items-center q-pt-lg q-pb-xl border-line">
-            <img
-              src="/img/avatar.png"
-              alt="Profile Picture"
-              class="w-40 h-40 rounded q-mr-sm"
-            />
+            <div class="w-40 h-40 rounded overflow-hidden q-mr-sm">
+              <img
+                src="/img/avatar.webp"
+                alt="Profile Picture"
+                width="45"
+                height="45"
+              />
+            </div>
             <div class="text-body2 text-weight-medium">
               {{ article.author?.name }}
             </div>
