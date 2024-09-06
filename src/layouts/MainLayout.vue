@@ -143,7 +143,7 @@
         />
       </div>
       <p class="text-body2" :class="getTextColorClass('text-grey-8')">
-        Thibault Guilhem • © 2024 • Chroniques d'un dev
+        Chroniques d'un dev • © 2024 • Thibault Guilhem
       </p>
       <q-btn
         flat
