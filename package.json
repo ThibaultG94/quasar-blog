@@ -1,7 +1,7 @@
 {
   "name": "npm",
   "version": "0.0.1",
-  "description": "A portfolio / blog build with quasar",
+  "description": "Journal de bord d'un développeur web autodidacte. Exploration des défis techniques, réflexions sur le métier et son évolution. Chroniques mêlant code, philosophie et expériences pratiques dans l'univers du développement web.",
   "productName": "Thibault Guilhem - Chroniques d'un dev",
   "author": "Thibault Guilhem",
   "private": true,
