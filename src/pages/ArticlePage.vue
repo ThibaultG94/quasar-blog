@@ -67,6 +67,60 @@
     <div v-else>
       <p>Article non trouvé.</p>
     </div>
+
+    <!-- Section des commentaires -->
+    <div v-if="article" class="q-mt-xl">
+      <h2 class="text-h4 q-mb-md">Commentaires</h2>
+
+      <!-- Formulaire d'ajout de commentaire -->
+      <q-card class="q-mb-md">
+        <q-card-section>
+          <form @submit.prevent="submitComment" class="q-gutter-md">
+            <q-input
+              v-model="newComment.author"
+              label="Nom"
+              :rules="[(val) => !!val || 'Le nom est requis']"
+              filled
+            />
+            <q-input
+              v-model="newComment.email"
+              label="Email"
+              type="email"
+              :rules="[
+                (val) => !!val || 'L\'email est requis',
+                (val) =>
+                  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val) || 'Email invalide',
+              ]"
+            />
+            <q-input
+              v-model="newComment.content"
+              label="Commentaire"
+              type="textarea"
+              :rules="[(val) => !!val || 'Le commentaire est requis']"
+            />
+            <q-btn
+              type="submit"
+              color="primary"
+              label="Ajouter un commentaire"
+            />
+          </form>
+        </q-card-section>
+      </q-card>
+
+      <!-- Liste des commentaires -->
+      <div v-if="article.comments && article.comments.length" class="q-mt-lg">
+        <div
+          v-for="comment in article.comments"
+          :key="comment.id"
+          class="q-mb-md"
+        >
+          <strong>{{ comment.author }}</strong>
+          <p>{{ comment.content }}</p>
+          <small>{{ new Date(comment.createdAt).toLocaleString() }}</small>
+        </div>
+      </div>
+      <p v-else>Aucun commentaire pour le moment.</p>
+    </div>
   </div>
 </template>
 
@@ -74,6 +128,7 @@
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { usePostStore } from "src/stores/postStore";
+import { useQuasar } from "quasar";
 
 const props = defineProps({
   darkMode: Boolean,
@@ -81,11 +136,21 @@ const props = defineProps({
 
 const route = useRoute();
 const postStore = usePostStore();
+const $q = useQuasar();
 
 const article = ref(null);
 const formattedDate = ref("");
+const newComment = ref({
+  author: "",
+  email: "",
+  content: "",
+});
 
 onMounted(async () => {
+  await loadArticleAndComments();
+});
+
+async function loadArticleAndComments() {
   const post = await postStore.getPostBySlug(route.params.articleSlug);
 
   if (post) {
@@ -95,8 +160,57 @@ onMounted(async () => {
       month: "long",
       year: "numeric",
     });
+    await postStore.fetchComments(post.id);
+    article.value = {
+      ...article.value,
+      comments: postStore.getPostById(post.id).comments,
+    };
   }
-});
+}
+
+async function submitComment() {
+  try {
+    if (!article.value || !article.value.id) {
+      throw new Error("Article non trouvé ou ID manquant");
+    }
+    console.log(
+      "Tentative d'ajout de commentaire pour l'article:",
+      article.value.id
+    );
+    console.log("Données du commentaire:", {
+      postId: article.value.id,
+      author: newComment.value.author,
+      email: newComment.value.email,
+      content: newComment.value.content,
+    });
+    const result = await postStore.addComment(
+      article.value.id,
+      newComment.value.author,
+      newComment.value.email,
+      newComment.value.content
+    );
+    console.log("Résultat de l'ajout du commentaire:", result);
+    newComment.value = { author: "", email: "", content: "" };
+    $q.notify({
+      color: "positive",
+      message: "Commentaire ajouté avec succès!",
+      icon: "check",
+    });
+  } catch (error) {
+    console.error("Erreur détaillée lors de l'ajout du commentaire:", error);
+    if (error.graphQLErrors) {
+      console.error("GraphQL errors:", error.graphQLErrors);
+    }
+    if (error.networkError) {
+      console.error("Network error:", error.networkError);
+    }
+    $q.notify({
+      color: "negative",
+      message: "Erreur lors de l'ajout du commentaire.",
+      icon: "report_problem",
+    });
+  }
+}
 
 // Fonction pour appliquer les marges selon le type de contenu
 function getMarginClasses(child) {

@@ -10,11 +10,19 @@ const httpLink = new HttpLink({
   credentials: "include",
 });
 
-const cache = new InMemoryCache();
-
 const apolloClient = new ApolloClient({
   link: httpLink,
-  cache,
+  cache: new InMemoryCache(),
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: "no-cache",
+      errorPolicy: "ignore",
+    },
+    query: {
+      fetchPolicy: "no-cache",
+      errorPolicy: "all",
+    },
+  },
 });
 
 export default apolloClient;
