@@ -91,12 +91,14 @@
                 (val) =>
                   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val) || 'Email invalide',
               ]"
+              filled
             />
             <q-input
               v-model="newComment.content"
               label="Commentaire"
               type="textarea"
               :rules="[(val) => !!val || 'Le commentaire est requis']"
+              filled
             />
             <q-btn
               type="submit"
@@ -109,17 +111,34 @@
 
       <!-- Liste des commentaires -->
       <div v-if="article.comments && article.comments.length" class="q-mt-lg">
-        <div
-          v-for="comment in article.comments"
-          :key="comment.id"
-          class="q-mb-md"
-        >
-          <strong>{{ comment.author }}</strong>
-          <p>{{ comment.content }}</p>
-          <small>{{ new Date(comment.createdAt).toLocaleString() }}</small>
-        </div>
+        <q-list bordered separator>
+          <q-item
+            v-for="comment in article.comments"
+            :key="comment.id"
+            class="q-py-md"
+          >
+            <q-item-section avatar>
+              <q-avatar color="primary" text-color="white">
+                {{ comment.author.charAt(0).toUpperCase() }}
+              </q-avatar>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label class="text-weight-bold">{{
+                comment.author
+              }}</q-item-label>
+              <q-item-label caption>{{
+                new Date(comment.createdAt).toLocaleString()
+              }}</q-item-label>
+              <q-item-label class="q-mt-sm">{{ comment.content }}</q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
       </div>
-      <p v-else>Aucun commentaire pour le moment.</p>
+      <q-card v-else class="q-pa-md text-center">
+        <q-card-section>
+          <p class="text-subtitle1">Aucun commentaire pour le moment.</p>
+        </q-card-section>
+      </q-card>
     </div>
   </div>
 </template>
