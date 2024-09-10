@@ -117,7 +117,7 @@
               />
               <q-btn
                 type="submit"
-                color="primary"
+                color="secondary"
                 label="Ajouter un commentaire"
               />
             </div>
@@ -134,7 +134,7 @@
             class="q-py-md"
           >
             <q-item-section avatar>
-              <q-avatar color="primary" text-color="white">
+              <q-avatar color="secondary" text-color="white">
                 {{ comment.author.charAt(0).toUpperCase() }}
               </q-avatar>
             </q-item-section>
