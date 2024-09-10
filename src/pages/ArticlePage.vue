@@ -1,6 +1,6 @@
 <template>
   <div class="q-px-xs-md q-px-sm-lg q-pt-xl">
-    <div v-if="article">
+    <div v-if="article" class="article">
       <div class="text-center q-pt-md q-mb-lg">
         <p
           class="text-subtitle1 q-mt-none text-weight-medium"
@@ -75,36 +75,52 @@
       <!-- Formulaire d'ajout de commentaire -->
       <q-card class="q-mb-md">
         <q-card-section>
+          <p class="text-caption q-mb-sm">
+            Votre adresse e-mail ne sera pas publiée.
+          </p>
           <form @submit.prevent="submitComment" class="q-gutter-md">
             <q-input
               v-model="newComment.author"
               label="Nom"
-              :rules="[(val) => !!val || 'Le nom est requis']"
+              :rules="[(val) => !isSubmitted || !!val || 'Le nom est requis']"
               filled
+              :error="showErrors"
             />
             <q-input
               v-model="newComment.email"
               label="Email"
               type="email"
               :rules="[
-                (val) => !!val || 'L\'email est requis',
+                (val) => !isSubmitted || !!val || 'L\'email est requis',
                 (val) =>
-                  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val) || 'Email invalide',
+                  !isSubmitted ||
+                  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val) ||
+                  'Email invalide',
               ]"
               filled
+              :error="showErrors"
             />
             <q-input
               v-model="newComment.content"
               label="Commentaire"
               type="textarea"
-              :rules="[(val) => !!val || 'Le commentaire est requis']"
+              :rules="[
+                (val) => !isSubmitted || !!val || 'Le commentaire est requis',
+              ]"
               filled
+              :error="showErrors"
             />
-            <q-btn
-              type="submit"
-              color="primary"
-              label="Ajouter un commentaire"
-            />
+            <div class="row justify-between">
+              <q-checkbox
+                v-model="saveInfo"
+                label="Sauvegarder mon nom et email pour la prochaine fois"
+              />
+              <q-btn
+                type="submit"
+                color="primary"
+                label="Ajouter un commentaire"
+              />
+            </div>
           </form>
         </q-card-section>
       </q-card>
@@ -165,9 +181,22 @@ const newComment = ref({
   content: "",
 });
 
+const saveInfo = ref(false);
+const showErrors = ref(false);
+const isSubmitted = ref(false);
+
 onMounted(async () => {
   await loadArticleAndComments();
+  await loadInfo();
 });
+
+async function loadInfo() {
+  const savedAuthor = localStorage.getItem("commentAuthor");
+  const savedEmail = localStorage.getItem("commentEmail");
+  if (savedAuthor) newComment.value.author = savedAuthor;
+  if (savedEmail) newComment.value.email = savedEmail;
+  saveInfo.value = !!savedAuthor || !!savedEmail;
+}
 
 async function loadArticleAndComments() {
   const post = await postStore.getPostBySlug(route.params.articleSlug);
@@ -188,41 +217,39 @@ async function loadArticleAndComments() {
 }
 
 async function submitComment() {
+  showErrors.value = false;
+  isSubmitted.value = true;
   try {
     if (!article.value || !article.value.id) {
       throw new Error("Article non trouvé ou ID manquant");
     }
-    console.log(
-      "Tentative d'ajout de commentaire pour l'article:",
-      article.value.id
-    );
-    console.log("Données du commentaire:", {
-      postId: article.value.id,
-      author: newComment.value.author,
-      email: newComment.value.email,
-      content: newComment.value.content,
-    });
-    const result = await postStore.addComment(
+    await postStore.addComment(
       article.value.id,
       newComment.value.author,
       newComment.value.email,
       newComment.value.content
     );
-    console.log("Résultat de l'ajout du commentaire:", result);
+    if (saveInfo.value) {
+      localStorage.setItem("commentAuthor", newComment.value.author);
+      localStorage.setItem("commentEmail", newComment.value.email);
+    } else {
+      localStorage.removeItem("commentAuthor");
+      localStorage.removeItem("commentEmail");
+    }
     newComment.value = { author: "", email: "", content: "" };
+    isSubmitted.value = false;
+    showErrors.value = false;
     $q.notify({
       color: "positive",
       message: "Commentaire ajouté avec succès!",
       icon: "check",
     });
+    await loadArticleAndComments();
+    if (saveInfo.value) {
+      await loadInfo();
+    }
   } catch (error) {
     console.error("Erreur détaillée lors de l'ajout du commentaire:", error);
-    if (error.graphQLErrors) {
-      console.error("GraphQL errors:", error.graphQLErrors);
-    }
-    if (error.networkError) {
-      console.error("Network error:", error.networkError);
-    }
     $q.notify({
       color: "negative",
       message: "Erreur lors de l'ajout du commentaire.",
@@ -255,7 +282,7 @@ function getTextColorClass(lightClass) {
 </script>
 
 <style scoped>
-p,
+.article p,
 li {
   font-size: 1.25rem;
   font-weight: 400;
