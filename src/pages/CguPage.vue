@@ -62,13 +62,14 @@
           </p>
           <h4 class="text-h6 q-mb-sm">Contributions des utilisateurs</h4>
           <p>
-            Les utilisateurs auront la possibilité de commenter les articles de
-            blog et d'échanger entre eux dans la section commentaires. En
-            publiant un commentaire, les utilisateurs acceptent de respecter les
-            règles de courtoisie et de ne pas publier de contenu illicite,
-            offensant, ou en violation des droits d'autrui. Chroniques d'un dev
+            Les utilisateurs peuvent désormais commenter les articles via le
+            formulaire de commentaires fourni. En publiant un commentaire, les
+            utilisateurs acceptent de fournir un nom et une adresse e-mail
+            valide (qui ne sera pas publiée). Les commentaires doivent être
+            respectueux, pertinents et ne pas contenir de contenu illicite,
+            offensant ou en violation des droits d'autrui. Chroniques d'un dev
             se réserve le droit de modérer, éditer ou supprimer tout commentaire
-            qui ne respecterait pas ces règles.
+            ne respectant pas ces règles.
           </p>
         </q-card-section>
         <q-card-section class="q-mb-xs">
@@ -137,20 +138,22 @@
         <q-card-section class="q-mb-xs">
           <h3 class="text-h5 q-mb-sm">Protection des données personnelles</h3>
           <p class="q-pb-md">
-            Chroniques d'un dev ne collecte aucune donnée personnelle
-            identifiable de ses utilisateurs. Les interactions des utilisateurs
-            avec le Site, telles que la publication de commentaires, ne
-            nécessitent pas la fourniture de données personnelles.
+            Chroniques d'un dev collecte les noms et adresses e-mail des
+            utilisateurs qui laissent des commentaires. Ces informations sont
+            utilisées uniquement pour la gestion des commentaires et ne seront
+            pas partagées avec des tiers. Les utilisateurs ont la possibilité de
+            sauvegarder ces informations pour leurs prochains commentaires.
           </p>
           <h4 class="text-h6 q-mb-sm">
             Utilisation des cookies et stockage local
           </h4>
           <p class="q-pb-md">
             Chroniques d'un dev utilise des cookies et le stockage local
-            (localStorage ou sessionStorage) uniquement pour mémoriser les
-            préférences de l'utilisateur, telles que le mode d'affichage (par
-            exemple, mode sombre). Aucune donnée personnelle n'est stockée dans
-            ces cookies ou dans le stockage local.
+            (localStorage ou sessionStorage) pour mémoriser les préférences de
+            l'utilisateur, telles que le mode d'affichage (par exemple, mode
+            sombre). Les noms et adresses e-mail des commentateurs peuvent être
+            stockés dans les cookies du navigateur si l'utilisateur choisit
+            l'option 'Sauvegarder mon nom et email pour la prochaine fois'.
           </p>
           <h4 class="text-h6 q-mb-sm">Engagement de confidentialité</h4>
           <p>
@@ -229,7 +232,7 @@
           <h4 class="text-h6 q-mb-sm">Date de la dernière modification</h4>
           <p class="q-mb-xl">
             Ces Conditions Générales d'Utilisation ont été mises à jour pour la
-            dernière fois le Jeudi 27 Juin 2024 à 11h38.
+            dernière fois le Lundi 16 Septembre 2024 à 14h49.
           </p>
         </q-card-section>
       </q-page-padding>
