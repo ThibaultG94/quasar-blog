@@ -72,7 +72,7 @@ const projects = [
     description:
       "Bienvenue sur mon site portfolio ! Ici, vous pouvez découvrir mes projets, consulter mon CV, et entrer en contact avec moi. Explorez les technologies que j'utilise, les applications que j'ai développées, et apprenez-en plus sur mon parcours professionnel et mes compétences en développement web.",
     image: "img/projet-portfolio.webp",
-    link: "https://www.thibaultguilhem.blog/",
+    link: "https://www.thibaultguilhem.com/",
   },
 ];
 
