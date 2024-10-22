@@ -113,7 +113,7 @@
       class="q-mt-lg q-pb-sm text-center"
       :class="getTextColorClass('text-grey-9')"
     >
-      <div class="row justify-center q-gutter-xs q-mb-sm">
+      <address class="row justify-center q-gutter-xs q-mb-sm">
         <q-btn
           flat
           round
@@ -141,7 +141,7 @@
           aria-label="LinkedIn"
           :class="getTextColorClass('text-grey-9')"
         />
-      </div>
+      </address>
       <p class="text-body2" :class="getTextColorClass('text-grey-8')">
         Chroniques d'un dev • © 2024 • Thibault Guilhem
       </p>

@@ -24,7 +24,7 @@
           >
             Développeur Web
           </p>
-          <div class="row no-wrap justify-center q-gutter-xs">
+          <address class="row no-wrap justify-center q-gutter-xs">
             <q-btn
               flat
               round
@@ -51,7 +51,7 @@
               target="_blank"
               class="text-body1"
             />
-          </div>
+          </address>
         </div>
         <div
           :class="getTextColorClass('text-grey-9')"
