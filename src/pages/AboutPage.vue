@@ -3,7 +3,7 @@
     <q-page>
       <h1 class="text-size-h2 text-weight-bold q-pb-lg border-line">About</h1>
       <div class="col-to-row no-wrap q-gutter-lg q-mt-sm">
-        <div class="text-center col-3">
+        <aside class="text-center col-3">
           <div class="w-200 h-200 q-mx-auto q-mb-sm">
             <div class="rounded w-200 h-200 overflow-hidden">
               <img
@@ -52,8 +52,8 @@
               class="text-body1"
             />
           </address>
-        </div>
-        <div
+        </aside>
+        <article
           :class="getTextColorClass('text-grey-9')"
           class="text-subtitle1 col"
         >
@@ -85,7 +85,7 @@
             regard lucide sur ses implications. Dans cet univers binaire, la
             pensée, elle, reste résolument analogique.
           </p>
-        </div>
+        </article>
       </div>
     </q-page>
   </div>

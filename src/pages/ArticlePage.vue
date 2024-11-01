@@ -1,6 +1,6 @@
 <template>
   <div class="q-px-xs-md q-px-sm-lg q-pt-xl">
-    <div v-if="article" class="article">
+    <article v-if="article" class="article">
       <div class="text-center q-pt-md q-mb-lg">
         <p
           class="text-subtitle1 q-mt-none text-weight-medium"
@@ -63,7 +63,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </article>
     <div v-else>
       <p>Article non trouvé.</p>
     </div>
